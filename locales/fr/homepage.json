@@ -1,0 +1,9 @@
+{
+  "title": "Starbase tools",
+  "description": "Outils et calculateurs pour Starbase",
+  "affiliation": "Ce site n'a aucune affiliation avec Frozenbyte ou Starbase",
+  "work_in_progress": "Ce site est toujours en construction, il y a des typos et des bugs",
+  "build": "Les calculateurs fonctionnent actuellement avec le build {{build}}",
+  "discord": "Rejoignez notre serveur discord pour discuter et donner du feedback",
+  "join_discord": "Rejoignez nous sur discord !"
+}

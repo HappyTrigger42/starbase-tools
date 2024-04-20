@@ -1,0 +1,7 @@
+{
+  "title": "Soucis",
+  "no-issues": "actuellement aucun problème n'a été signalé",
+  "issues": {
+    "1": "la calculation de la dissipation de chaleur pour les vaisseaux n'est pas assez précise"
+  }
+}

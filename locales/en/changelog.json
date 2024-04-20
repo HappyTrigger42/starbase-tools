@@ -1,0 +1,77 @@
+{
+  "changelog": "changelog",
+  "issues": "known issues",
+  "todo": "todo list",
+  "versions": {
+    "14" : {
+      "version": "0.5.1",
+      "date": "2024/04/19",
+      "changes": "- implemented MoriWatari's speed calculation\n- added warnings on the absence of maneuver thrusters for the calculations"
+    },
+    "13" : {
+      "version": "0.5.0",
+      "date": "2024/03/30",
+      "changes": "Added a values page to make it easier to see what the calculators are using as input values but also make it easier to contest a value"
+    },
+    "12" : {
+      "version": "0.4.0",
+      "date": "2024/03/27",
+      "changes": "Added the thruster optimisation prototype calculator ( will require polishing )"
+    },
+    "11" : {
+      "version": "0.3.4",
+      "date": "2024/03/07",
+      "changes": "- added warnings on the speed display of ships to indicate issues with propellant\n- added wright display on flight stats for the ship"
+    },
+    "10": {
+      "version": "0.3.3",
+      "date": "2023/12/28",
+      "changes": "- corrected an issue with the CSS on the footer for mobile\n- automated removal of the first '0' of a user input\n- added icons for the ship calculator ( more to come )"
+    },
+    "9": {
+      "version": "0.3.2",
+      "date": "2023/12/26",
+      "changes": "- corrected an issue with the CSS on the homepage for mobile\n- Started implementing the new wallpapers\n- attribution for the website and the logo in the footer"
+    },
+    "8": {
+      "version": "0.3.1",
+      "date": "2023/12/11",
+      "changes": "- Corrected the french translation\n- Corrected an issue with cap ship calculator"
+    },
+    "7": {
+      "version": "0.3.0",
+      "date": "2023/12/09",
+      "changes": "Added a capship price calculator"
+    },
+    "6": {
+      "version": "0.2.0",
+      "date": "2023/12/06",
+      "changes": "- values no longer get erased when going from one page to another\n- added a reset button to erase all values\n- added the possibility of sharing links containing all the data"
+    },
+    "5": {
+      "version": "0.1.5",
+      "date": "2023/12/03",
+      "changes": "changed the layout of the calculator in order to make it more readable and added the possibility of showing / hiding stats"
+    },
+    "4": {
+      "version": "0.1.4",
+      "date": "2023/11/24",
+      "changes": "corrected the issue with direct access to the urls causing a 404 error"
+    },
+    "3": {
+      "version": "0.1.2",
+      "date": "2023/11/23",
+      "changes": "improved loading times, the url preview and corrected console errors"
+    },
+    "2": {
+      "version": "0.1.1",
+      "date": "2023/11/22",
+      "changes": "added changelog, todo list and known issues"
+    },
+    "1": {
+      "version": "0.1.0",
+      "date": "2023/11/05",
+      "changes": "initial release"
+    }
+  }
+}

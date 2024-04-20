@@ -1,0 +1,10 @@
+{
+  "navbar": {
+    "home": "accueil",
+    "ship": "calculs vaisseau",
+    "changelog": "changelog",
+    "capship_price": "coût de capital ship",
+    "thruster_optimisation": "optimisation propultion",
+    "values": "valeurs"
+  }
+}

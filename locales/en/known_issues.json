@@ -1,0 +1,7 @@
+{
+  "title": "Issues",
+  "no-issues": "currently there are no issues reported",
+  "issues": {
+    "1": "the heat dissipation on the ship calculator is not accurate enough"
+  }
+}

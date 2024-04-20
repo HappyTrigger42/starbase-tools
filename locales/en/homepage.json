@@ -1,0 +1,9 @@
+{
+  "title": "Starbase tools",
+  "description": "Tools and calculators for Starbase",
+  "affiliation": "This website is not affiliated with Frozenbyte or Starbase in any way",
+  "work_in_progress": "This website is still a work in progress, there will be typos and bugs, please report them if you find any",
+  "build": "The calculators currently works for the build {{build}}",
+  "discord": "Join the discord server for feedback and suggestions",
+  "join_discord": "Join us on discord !"
+}

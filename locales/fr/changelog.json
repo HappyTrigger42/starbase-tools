@@ -1,0 +1,76 @@
+{
+  "changelog": "changelog",
+  "issues": "problèmes connus",
+  "todo": "choses à faire",
+  "versions": {
+    "14" : {
+      "version": "0.5.1",
+      "date": "2024/04/19",
+      "changes": "- implémenté le calcul de vitesse de MoriWatari\n- ajouté un avertissement sur l'absence de propulseur de maneuvre pour les calculs de vitesse"
+    },
+    "13" : {
+      "version": "0.5.0",
+      "date": "2024/03/30",
+      "changes": "Ajouté une page values pour rendre plus simple de comprendre ce que les calculateurs utilisent en valeurs d'entrée mais aussi de pouvoir contester une valeur plus simplement"
+    },
+    "12" : {
+      "version": "0.4.0",
+      "date": "2024/03/27",
+      "changes": "Ajouté le prototype du calculateur d'optimisation des thrusters ( va nécessiter tu rafinage )"
+    },
+    "11" : {
+      "version": "0.3.4",
+      "date": "2024/03/07",
+      "changes": "- ajouté des avertissements sur l'affichage de la vitesse des vaisseaux pour indiquer des soucis avec le propergol\n- ajouté l'affichage de la masse du ship dans les stats de vol"
+    },
+    "10": {
+      "version": "0.3.3",
+      "date": "2023/12/28",
+      "changes": "- corrigé un soucis avec le CSS du bas de page sur mobile\n- retrait automatique du premier '0' d'une valeur donnée par l'utilisateur\n- ajouté des icones pour le calculateur de vaisseau ( plus seront ajoutées )"
+    },
+    "9": {
+      "version": "0.3.2",
+      "date": "2023/12/26",
+      "changes": "- correction d'un problème avec le CSS sur la page d'accueil pour mobile\n- Début de la mise en œuvre des nouveaux fonds d'écran\n- attribution du site internet et du logo en pied de page"
+    },
+    "8": {
+      "version": "0.3.1",
+      "date": "2023/12/11",
+      "changes": "- Corrigé la traduction française\n- Corrigé un soucis avec le calculateur de capship"
+    },
+    "7": {
+      "version": "0.3.0",
+      "date": "2023/12/09",
+      "changes": "ajouté un calculateur de prix de capship"
+    },    "6": {
+      "version": "0.2.0",
+      "date": "2023/12/06",
+      "changes": "- les valeurs ne sont plus effacées quand on passe d'une page à l'autre\n- ajouté un bouton pour réinitialiser toutes les valeurs\n- ajouté un bouton pour partager un lien qui content toutes les valeurs"
+    },
+    "5": {
+      "version": "0.1.5",
+      "date": "2023/12/03",
+      "changes": "changé le layout du calculateur de façon à le rendre plus lisible et ajouté la possibilité d'afficher / cacher les stats"
+    },
+    "4": {
+      "version": "0.1.4",
+      "date": "2023/11/24",
+      "changes": "corrigé le problème qui causait une erreur 404 en cas d'accès direct à une url"
+    },
+    "3": {
+      "version": "0.1.2",
+      "date": "2023/11/23",
+      "changes": "amélioré le temps de chargement, le preview d'url et corrigé des erreurs en console"
+    },
+    "2": {
+      "date": "2023/11/22",
+      "version": "0.1.1",
+      "changes": "ajouté un changelog, les choses à faire et les problèmes connus"
+    },
+    "1": {
+      "date": "2023 11 05",
+      "version": "0.1.0",
+      "changes": "première version"
+    }
+  }
+}
