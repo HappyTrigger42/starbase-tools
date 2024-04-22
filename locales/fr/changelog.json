@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "15" : {
+      "version": "0.5.2",
+      "date": "2024/04/23",
+      "changes": "Rendu le code su site partiellement open source à https://github.com/HappyTrigger42/starbase-tools"
+    },
     "14" : {
       "version": "0.5.1",
       "date": "2024/04/19",

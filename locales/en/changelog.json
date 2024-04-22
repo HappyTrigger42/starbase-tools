@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "15" : {
+      "version": "0.5.2",
+      "date": "2024/04/23",
+      "changes": "made the code of the website partially open source at https://github.com/HappyTrigger42/starbase-tools"
+    },
     "14" : {
       "version": "0.5.1",
       "date": "2024/04/19",
