@@ -94,88 +94,96 @@ function PowerGenStats ({
         setDisplay(e.target.checked)
     }
 
-    return <Card className={"stats-card"}>
-        <Card.Header className={"stats-card-header"}>
-            <h4 className={"stats-sub-title"}>{t('power_generation.title')}</h4>
-            <Form className={"stats-toggle"}>
-                <Form.Check
-                    type="switch"
-                    checked={Display}
-                    onChange={handleDisplay}
-                />
-            </Form>
-        </Card.Header>
-        <Card.Body>
-            {
-                (Display) ?
-                    <Container className={"stats-container"}>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('power_generation.heat_tokens')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {generatorDensity}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('power_generation.total_power_generation')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {TotalPowerGenStr} {t('elec_per_second')}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('power_generation.generator_heat')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(totalHeatGen)} {t('heat_per_second')}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('power_generation.small_generator_count')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {TotalGeneratorCount}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {overwriteFuelChamberCount ? t('power_generation.fuel_chamber_count') : t('power_generation.presumed_fuel_chamber_count')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(overwriteFuelChamberCount ? overwrittenFuelChamberCount : FuelChamberCount)}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('power_generation.presumed_fuel_chamber_heat')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(totalHeatFuelChamber)} {t('heat_per_second')}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('power_generation.total_heat')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {TotalHeat} {t('heat_per_second')}
-                            </Col>
-                        </Row>
-                        {
-                            (TotalGeneratorCount / 3 > (overwriteFuelChamberCount ? overwrittenFuelChamberCount : FuelChamberCount)) ? (
-                                <Row className={"stats-warning"}>
-                                    {t('power_generation.too_many_gens')}
-                                </Row>
-                            ) : null
-                        }
-                    </Container> : null
-            }
-        </Card.Body>
-    </Card>
+    if (generatorCards.length === 0) {
+        return <Card>
+            <Card.Header>
+                {t('power_generation.no_generators')}
+            </Card.Header>
+        </Card>
+    } else {
+        return <Card className={"stats-card"}>
+            <Card.Header className={"stats-card-header"}>
+                <h4 className={"stats-sub-title"}>{t('power_generation.title')}</h4>
+                <Form className={"stats-toggle"}>
+                    <Form.Check
+                        type="switch"
+                        checked={Display}
+                        onChange={handleDisplay}
+                    />
+                </Form>
+            </Card.Header>
+            <Card.Body>
+                {
+                    (Display) ?
+                        <Container className={"stats-container"}>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('power_generation.heat_tokens')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {generatorDensity}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('power_generation.total_power_generation')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {TotalPowerGenStr} {t('elec_per_second')}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('power_generation.generator_heat')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(totalHeatGen)} {t('heat_per_second')}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('power_generation.small_generator_count')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {TotalGeneratorCount}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {overwriteFuelChamberCount ? t('power_generation.fuel_chamber_count') : t('power_generation.presumed_fuel_chamber_count')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(overwriteFuelChamberCount ? overwrittenFuelChamberCount : FuelChamberCount)}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('power_generation.presumed_fuel_chamber_heat')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(totalHeatFuelChamber)} {t('heat_per_second')}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('power_generation.total_heat')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {TotalHeat} {t('heat_per_second')}
+                                </Col>
+                            </Row>
+                            {
+                                (TotalGeneratorCount / 3 > (overwriteFuelChamberCount ? overwrittenFuelChamberCount : FuelChamberCount)) ? (
+                                    <Row className={"stats-warning"}>
+                                        {t('power_generation.too_many_gens')}
+                                    </Row>
+                                ) : null
+                            }
+                        </Container> : null
+                }
+            </Card.Body>
+        </Card>
+    }
 }
 
 export default PowerGenStats;

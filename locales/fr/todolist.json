@@ -4,16 +4,13 @@
   "tasks": {
     "1": "ajouter un mode sombre",
     "2": "plus de CSS pour rendre le site plus agréable",
-    "3": "ajouter un bot Discord pour les notifications des changements sur le site",
-    "4": "ajouter une page à propos de moi",
-    "5": "calculateur d'efficacité de recherche",
-    "6": "ajouter au moins 2 ou 3 langues gérées supplémentaires",
-    "7": "meilleurs temps de chargement sur mobile",
-    "8": "calculateur d'alliages",
-    "9": "prix des marchés",
-    "10": "ajouter le temps de vol avec les rods ( gros gens / gens )",
-    "11": "meilleurs calcualtions pour la chaleur ( dissipation passive / donné au radiateur directement )",
-    "12": "faire une page qui montre les valeurs brutes des composants et comment elles ont été obtenues",
-    "13": "les plasmas devraient avoir un attribut de quantitté comme les autres thrusters dans le calculatieur d'optimisation des thrusters"
+    "3": "ajouter une page à propos de moi",
+    "4": "calculateur d'efficacité de recherche",
+    "5": "ajouter au moins 2 ou 3 langues gérées supplémentaires",
+    "6": "calculateur d'alliages",
+    "7": "prix des marchés",
+    "8": "ajouter le temps de vol avec les rods ( gros gens / gens )",
+    "9": "meilleurs calcualtions pour la chaleur ( dissipation passive / donné au radiateur directement )",
+    "10": "les plasmas devraient avoir un attribut de quantitté comme les autres thrusters dans le calculatieur d'optimisation des thrusters"
   }
 }

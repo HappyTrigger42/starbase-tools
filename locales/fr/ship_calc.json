@@ -95,6 +95,7 @@
   },
   "stats_title": "Statistiques",
   "power_generation": {
+    "no_generators": "il n'y a pas de générateurs",
     "title": "Production d'énergie",
     "heat_tokens": "jetons de chaleur par générateur",
     "total_power_generation": "production d'énergie totale",
@@ -117,6 +118,7 @@
     "heat_generated_when_shooting": "chaleur générée en tirant"
   },
   "heat_management": {
+    "no_heat": "il n'y a pas de sources de chaleur",
     "title": "Gestion de la chaleur",
     "stats": "les statistiques n'incluent pas la dissipation passive de la chaleur",
     "required_heatsinks": "dissipateurs thermiques nécessaires",
@@ -131,12 +133,14 @@
     "refill_time": "temps de recharge de la batterie",
     "bat_refill": "batteries rechargées par seconde",
     "bat_capacity": "capacité de la batterie",
-    "thrusters_not_included": "les propulseurs ne sont pas ajoutés aux autres consommations",
     "passive_weapons": "La consommation passive des armes est supérieure à la production d'énergie",
     "shooting": "tir",
     "towing": "remorquage",
     "mining": "minage",
-    "thrusters": "propulseurs"
+    "thrusters": "propulseurs",
+    "combat": "combat ( armes + propulseurs )",
+    "combat_error": "La consommation du combat est supérieure à la production d'énergie",
+    "no_batteries": "il n'y a pas de batteries"
   },
   "tools": {
     "title": "Outils",

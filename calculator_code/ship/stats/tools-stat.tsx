@@ -59,99 +59,99 @@ function ToolsStats(
         setDisplay(e.target.checked)
     }
 
-    return <Card className={"stats-card"}>
-        <Card.Header className={"stats-card-header"}>
-            <h4 className={"stats-sub-title"}>{t('tools.title')}</h4>
-            <Form className={"stats-toggle"}>
-                <Form.Check
-                    type="switch"
-                    checked={Display}
-                    onChange={handleDisplay}
-                />
-            </Form>
-        </Card.Header>
-        <Card.Body>
-            {
-                (Display) ?
-                    <Container className={"stats-container"}>
-                        {
-                            (towingWeight === 0 && collectorCount === 0 && miningLaserCount === 0) ?
-                                <Row>
-                                    <Col className={"stats-text"} xs={12}>
-                                        {t('tools.no_tools')}
-                                    </Col>
-                                </Row> : null
-                        }
-                        {
-                            (collectorCount > 0 || miningLaserCount > 0) ?
-                                <Row>
-                                    <Col className={"stats-text"} xs={8}>
-                                        {t('tools.collectors_power_consumption')}
-                                    </Col>
-                                    <Col className={"stats-text-numbers"} xs={4}>
-                                        {prettyNumber(collectorPowerConsumption)} {t('elec_per_second')}
-                                    </Col>
-                                </Row> : null
-                        }
-                        {
-                            (collectorCount > 0 || miningLaserCount > 0) ?
-                                <Row>
-                                    <Col className={"stats-text"} xs={8}>
-                                        {t('tools.mining_lasers_power_consumption')}
-                                    </Col>
-                                    <Col className={"stats-text-numbers"} xs={4}>
-                                        {prettyNumber(miningLaserPowerConsumption)} {t('elec_per_second')}
-                                    </Col>
-                                </Row> : null
-                        }
-                        {
-                            (collectorCount > 0 || miningLaserCount > 0) ?
-                                <Row>
-                                    <Col className={"stats-text"} xs={8}>
-                                        {t('tools.mining_equipment_power_consumption')}
-                                    </Col>
-                                    <Col className={"stats-text-numbers"} xs={4}>
-                                        {prettyNumber(miningEquipmentPowerConsumption)} {t('elec_per_second')}
-                                    </Col>
-                                </Row> : null
-                        }
-                        {
-                            (miningEquipmentPowerConsumption > totalPowerGen) ?
-                                <Row>
-                                    <Col className={"stats-warning"} xs={8}>
-                                        {t('tools.power_deficit_equipment')}
-                                    </Col>
-                                    <Col className={"stats-warning-numbers"} xs={4}>
-                                        {prettyNumber(miningEquipmentPowerDeficit)} {t('elec_per_second')}
-                                    </Col>
-                                </Row> : null
-                        }
-                        {
-                            (towingWeight > 0) ?
-                                <Row>
-                                    <Col className={"stats-text"} xs={8}>
-                                        {t('tools.towing_power')}
-                                    </Col>
-                                    <Col className={"stats-text-numbers"} xs={4}>
-                                        {prettyNumber(maxTowingPower)} {t('elec_per_second')}
-                                    </Col>
-                                </Row> : null
-                        }
-                        {
-                            (towingWeight > 0 && towingPowerDeficit < 0) ?
-                                <Row>
-                                    <Col className={"stats-warning"} xs={8}>
-                                        {t('tools.towing_deficit')}
-                                    </Col>
-                                    <Col className={"stats-warning-numbers"} xs={4}>
-                                        {prettyNumber(towingPowerDeficit)} {t('elec_per_second')}
-                                    </Col>
-                                </Row> : null
-                        }
-                    </Container> : null
-            }
-        </Card.Body>
-    </Card>
+    if (collectorCount === 0 && miningLaserCount === 0 && towingWeight === 0) {
+        return <Card>
+            <Card.Header>
+                {t('tools.no_tools')}
+            </Card.Header>
+        </Card>
+    } else {
+        return <Card className={"stats-card"}>
+            <Card.Header className={"stats-card-header"}>
+                <h4 className={"stats-sub-title"}>{t('tools.title')}</h4>
+                <Form className={"stats-toggle"}>
+                    <Form.Check
+                        type="switch"
+                        checked={Display}
+                        onChange={handleDisplay}
+                    />
+                </Form>
+            </Card.Header>
+            <Card.Body>
+                {
+                    (Display) ?
+                        <Container className={"stats-container"}>
+                            {
+                                (collectorCount > 0 || miningLaserCount > 0) ?
+                                    <Row>
+                                        <Col className={"stats-text"} xs={8}>
+                                            {t('tools.collectors_power_consumption')}
+                                        </Col>
+                                        <Col className={"stats-text-numbers"} xs={4}>
+                                            {prettyNumber(collectorPowerConsumption)} {t('elec_per_second')}
+                                        </Col>
+                                    </Row> : null
+                            }
+                            {
+                                (collectorCount > 0 || miningLaserCount > 0) ?
+                                    <Row>
+                                        <Col className={"stats-text"} xs={8}>
+                                            {t('tools.mining_lasers_power_consumption')}
+                                        </Col>
+                                        <Col className={"stats-text-numbers"} xs={4}>
+                                            {prettyNumber(miningLaserPowerConsumption)} {t('elec_per_second')}
+                                        </Col>
+                                    </Row> : null
+                            }
+                            {
+                                (collectorCount > 0 || miningLaserCount > 0) ?
+                                    <Row>
+                                        <Col className={"stats-text"} xs={8}>
+                                            {t('tools.mining_equipment_power_consumption')}
+                                        </Col>
+                                        <Col className={"stats-text-numbers"} xs={4}>
+                                            {prettyNumber(miningEquipmentPowerConsumption)} {t('elec_per_second')}
+                                        </Col>
+                                    </Row> : null
+                            }
+                            {
+                                (miningEquipmentPowerConsumption > totalPowerGen) ?
+                                    <Row>
+                                        <Col className={"stats-warning"} xs={8}>
+                                            {t('tools.power_deficit_equipment')}
+                                        </Col>
+                                        <Col className={"stats-warning-numbers"} xs={4}>
+                                            {prettyNumber(miningEquipmentPowerDeficit)} {t('elec_per_second')}
+                                        </Col>
+                                    </Row> : null
+                            }
+                            {
+                                (towingWeight > 0) ?
+                                    <Row>
+                                        <Col className={"stats-text"} xs={8}>
+                                            {t('tools.towing_power')}
+                                        </Col>
+                                        <Col className={"stats-text-numbers"} xs={4}>
+                                            {prettyNumber(maxTowingPower)} {t('elec_per_second')}
+                                        </Col>
+                                    </Row> : null
+                            }
+                            {
+                                (towingWeight > 0 && towingPowerDeficit < 0) ?
+                                    <Row>
+                                        <Col className={"stats-warning"} xs={8}>
+                                            {t('tools.towing_deficit')}
+                                        </Col>
+                                        <Col className={"stats-warning-numbers"} xs={4}>
+                                            {prettyNumber(towingPowerDeficit)} {t('elec_per_second')}
+                                        </Col>
+                                    </Row> : null
+                            }
+                        </Container> : null
+                }
+            </Card.Body>
+        </Card>
+    }
 }
 
 export default ToolsStats;

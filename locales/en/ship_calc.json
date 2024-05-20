@@ -95,6 +95,7 @@
   },
   "stats_title": "Stats",
   "power_generation": {
+    "no_generators": "there are no generators",
     "title": "Power generation",
     "heat_tokens": "heat tokens per generator",
     "total_power_generation": "total power generation",
@@ -117,6 +118,7 @@
     "heat_generated_when_shooting" : "heat generated when shooting"
   },
   "heat_management": {
+    "no_heat": "there are no heat sources",
     "title": "Heat management",
     "stats" : "stats do not include passive heat dissipation",
     "required_heatsinks": "required heatsinks",
@@ -131,12 +133,14 @@
     "refill_time": "battery refill time",
     "bat_refill": "batteries per second refill",
     "bat_capacity": "battery capacity",
-    "thrusters_not_included": "thrusters are not added to the other consumptions",
     "passive_weapons": "Passive weapon consumption is more than power generation",
     "shooting": "shooting",
     "towing": "towing",
     "mining": "mining",
-    "thrusters": "thrusters"
+    "thrusters": "thrusters",
+    "combat": "combat ( weapons + thrusters )",
+    "combat_error": "combat consumes more than power generation",
+    "no_batteries": "there are no batteries"
   },
   "tools": {
     "title": "Tools",

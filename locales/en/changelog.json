@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "16" : {
+      "version": "0.5.3",
+      "date": "2024/05/20",
+      "changes": "- implemented the combat stats on the ship calculator\n- shuffled the the layout of the ship calculator to regroup related elements\n- stats get hidden if there is no value to show\n- bug fixes"
+    },
     "15" : {
       "version": "0.5.2",
       "date": "2024/04/23",

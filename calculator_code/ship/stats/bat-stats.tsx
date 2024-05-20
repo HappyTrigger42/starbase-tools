@@ -3,6 +3,7 @@ import {bat_capacity} from "../../values/misc_constants";
 import {prettyNumber} from "../../../../utilities/pretty_number";
 import {Container, Row, Col, Card, Form} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
+import {Thruster} from "../../cards/thrusters_cards/thruster_types";
 
 function BatStats(
     {
@@ -16,6 +17,7 @@ function BatStats(
         miningLaserCount,
         towingWeight,
         thrusterElectricityConsumption,
+        thrusterCards,
     }:{
         batteryCount: number,
         weaponPassivePowerConsumption: number,
@@ -27,27 +29,38 @@ function BatStats(
         miningLaserCount: number,
         towingWeight: number,
         thrusterElectricityConsumption: number,
+        thrusterCards: Thruster[],
     }) {
 
     const { t } = useTranslation('ship_calc');
 
     const [totalBatCapacity, setTotalBatCapacity] = React.useState(0);
+
     const [batDeficitTimeWeapons, setBatDeficitTimeWeapons] = React.useState(0);
     const [batRefillTimeWeapons, setBatRefillTimeWeapons] = React.useState(0);
     const [batDeficitBatWeapons, setBatDeficitBatWeapons] = React.useState(0);
     const [batRefillBatWeapons, setBatRefillBatWeapons] = React.useState(0);
+
+    const [batDeficitTimeCombat, setBatDeficitTimeCombat] = React.useState(0);
+    const [batRefillTimeCombat, setBatRefillTimeCombat] = React.useState(0);
+    const [batDeficitBatCombat, setBatDeficitBatCombat] = React.useState(0);
+    const [batRefillBatCombat, setBatRefillBatCombat] = React.useState(0);
+
     const [batDeficitTimeTowing, setBatDeficitTimeTowing] = React.useState(0);
     const [batRefillTimeTowing, setBatRefillTimeTowing] = React.useState(0);
     const [batDeficitBatTowing, setBatDeficitBatTowing] = React.useState(0);
     const [batRefillBatTowing, setBatRefillBatTowing] = React.useState(0);
+
     const [batDeficitTimeMining, setBatDeficitTimeMining] = React.useState(0);
     const [batRefillTimeMining, setBatRefillTimeMining] = React.useState(0);
     const [batDeficitBatMining, setBatDeficitBatMining] = React.useState(0);
     const [batRefillBatMining, setBatRefillBatMining] = React.useState(0);
+
     const [batDeficitTimeThrusters, setBatDeficitTimeThrusters] = React.useState(0);
     const [batRefillTimeThrusters, setBatRefillTimeThrusters] = React.useState(0);
     const [batDeficitBatThrusters, setBatDeficitBatThrusters] = React.useState(0);
     const [batRefillBatThrusters, setBatRefillBatThrusters] = React.useState(0);
+
     const [Display, setDisplay] = useState(true)
 
     useEffect(() => { // bat calculations weapons
@@ -61,8 +74,20 @@ function BatStats(
             let refill = totalBatCapacity / (totalPowerGen - weaponPassivePowerConsumption);
             setBatRefillTimeWeapons(refill);
         }
-
     }, [weaponShootingPowerConsumption, batteryCount, totalPowerGen, totalBatCapacity, weaponPassivePowerConsumption]);
+
+    useEffect(() => { // bat calculations combat
+        let deficit = (weaponShootingPowerConsumption + thrusterElectricityConsumption) - totalPowerGen;
+        setBatDeficitBatCombat(deficit / bat_capacity)
+        let refill_bat = (totalPowerGen - (weaponPassivePowerConsumption + thrusterElectricityConsumption)) / bat_capacity;
+        setBatRefillBatCombat(refill_bat);
+        if (batteryCount > 0) {
+            let seconds = totalBatCapacity / deficit;
+            setBatDeficitTimeCombat(seconds);
+            let refill = totalBatCapacity / (totalPowerGen - (weaponPassivePowerConsumption + thrusterElectricityConsumption));
+            setBatRefillTimeCombat(refill);
+        }
+    }, [weaponShootingPowerConsumption, batteryCount, totalPowerGen, totalBatCapacity, weaponPassivePowerConsumption, thrusterElectricityConsumption]);
 
     useEffect(() => { // bat calculations towing
         let deficit = (towingPowerDeficit * -1);
@@ -176,138 +201,146 @@ function BatStats(
         setDisplay(e.target.checked)
     }
 
-    return <Card className={"stats-card"}>
-        <Card.Header className={"stats-card-header"}>
-            <h4 className={"stats-sub-title"}>{t('batteries.title')}</h4>
-            <Form className={"stats-toggle"}>
-                <Form.Check
-                    type="switch"
-                    checked={Display}
-                    onChange={handleDisplay}
-                />
-            </Form>
-        </Card.Header>
-        <Card.Body>
-            {
-                (Display) ?
-                    <Container className={"stats-container"}>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('batteries.bat_capacity')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(totalBatCapacity)}
-                            </Col>
-                        </Row>
-                        {
-                            (thrusterElectricityConsumption !==0 && (collectorCount !== 0 || miningLaserCount !== 0 || towingWeight !== 0 || weaponPassivePowerConsumption !== 0)) ? (
-                                <Row>
-                                    <Col className={"stats-text"} >
-                                        {t('batteries.thrusters_not_included')}
-                                    </Col>
-                                </Row>
-                            ) : null
-                        }
-                        {
-                            // ========================== bat stats
-                        }
-                        {
-                            (weaponPassivePowerConsumption > totalPowerGen) ? (
-                                <Row className={"stats-error"}>
-                                    {t('batteries.passive_weapons')}
-                                </Row>
-                            ) : null
-                        }
-                        {
-                            // ========================== bat warnings weapons
-                        }
-                        {
-                            (weaponPassivePowerConsumption <= totalPowerGen && weaponShootingPowerConsumption > totalPowerGen) ? (
-                                batWarning(t('batteries.shooting'))
-                            ) : null
-                        }
-                        {
-                            (weaponPassivePowerConsumption <= totalPowerGen && weaponShootingPowerConsumption > totalPowerGen) ? (
-                                <>
-                                    {batDrain(batDeficitTimeWeapons, batDeficitBatWeapons)}
-                                    {batRefill(batRefillTimeWeapons, batRefillBatWeapons)}
-                                </>
-                            ) : null
-                        }
-                        {
-                            (weaponShootingPowerConsumption < totalPowerGen && weaponPassivePowerConsumption !== 0) ? (
-                                batUnaffected(t('batteries.shooting'))
-                            ) : null
-                        }
-                        {
-                            // ========================== bat warnings towing
-                        }
-                        {
-                            (towingPowerDeficit < 0 && towingWeight !== 0) ? (
-                                batWarning(t('batteries.towing'))
-                            ) : null
-
-                        }
-                        {
-                            (towingPowerDeficit < 0) ? (
-                                <>
-                                    {batDrain(batDeficitTimeTowing, batDeficitBatTowing)}
-                                    {batRefill(batRefillTimeTowing, batRefillBatTowing)}
-                                </>
-                            ) : null
-                        }
-                        {
-                            (towingPowerDeficit >= 0 && towingWeight !== 0) ? (
-                                batUnaffected(t('batteries.towing'))
-                            ) : null
-                        }
-                        {
-                            // ========================== bat warnings mining
-                        }
-                        {
-                            (miningEquipmentPowerDeficit < 0) ? (
-                                batWarning(t('batteries.mining'))
-                            ) : null
-                        }
-                        {
-                            (miningEquipmentPowerDeficit < 0) ? (
-                                <>
-                                    {batDrain(batDeficitTimeMining, batDeficitBatMining)}
-                                    {batRefill(batRefillTimeMining, batRefillBatMining)}
-                                </>
-                            ) : null
-                        }
-                        {
-                            (miningEquipmentPowerDeficit > 0 && (collectorCount !== 0 || miningLaserCount !== 0)) ? (
-                                batUnaffected(t('batteries.mining'))
-                            ) : null
-                        }
-                        {
-                            // ========================== bat warnings thrusters
-                        }
-                        {
-                            (thrusterElectricityConsumption > totalPowerGen) ? (
-                                batWarning(t('batteries.thrusters'))
-                            ) : null
-                        }
-                        {
-                            (thrusterElectricityConsumption > totalPowerGen) ? (
-                                <>
-                                    {batDrain(batDeficitTimeThrusters, batDeficitBatThrusters)}
-                                    {batRefill(batRefillTimeThrusters, batRefillBatThrusters)}
-                                </>
-                            ) : null
-                        }
-                        {
-                            (thrusterElectricityConsumption < totalPowerGen) ? (
-                                batUnaffected(t('batteries.thrusters'))
-                            ) : null
-                        }
-                    </Container>
-                    : null
-            }
-        </Card.Body>
-    </Card>
+    if (batteryCount === 0 && weaponPassivePowerConsumption === 0 && thrusterCards.length === 0 && towingPowerDeficit === 0 && miningEquipmentPowerDeficit === 0) {
+        return <Card>
+            <Card.Header>
+                {t('batteries.no_batteries')}
+            </Card.Header>
+        </Card>
+    } else {
+        return <Card className={"stats-card"}>
+            <Card.Header className={"stats-card-header"}>
+                <h4 className={"stats-sub-title"}>{t('batteries.title')}</h4>
+                <Form className={"stats-toggle"}>
+                    <Form.Check
+                        type="switch"
+                        checked={Display}
+                        onChange={handleDisplay}
+                    />
+                </Form>
+            </Card.Header>
+            <Card.Body>
+                {
+                    (Display) ?
+                        <Container className={"stats-container"}>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('batteries.bat_capacity')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(totalBatCapacity)}
+                                </Col>
+                            </Row>
+                            {
+                                // ========================== bat stats ==========================
+                                (weaponPassivePowerConsumption > totalPowerGen) ? (
+                                    <Row className={"stats-error"}>
+                                        {t('batteries.passive_weapons')}
+                                    </Row>
+                                ) : null
+                            }
+                            {
+                                // ========================== bat warnings thrusters ==========================
+                                (thrusterElectricityConsumption > totalPowerGen) ? (
+                                    <>
+                                        {batWarning(t('batteries.thrusters'))}
+                                        {batDrain(batDeficitTimeThrusters, batDeficitBatThrusters)}
+                                        {batRefill(batRefillTimeThrusters, batRefillBatThrusters)}
+                                    </>
+                                ) : null
+                            }
+                            {
+                                (thrusterElectricityConsumption < totalPowerGen) ? (
+                                    batUnaffected(t('batteries.thrusters'))
+                                ) : null
+                            }
+                            {
+                                // ========================== bat warnings weapons ==========================
+                                (weaponPassivePowerConsumption <= totalPowerGen &&
+                                    weaponShootingPowerConsumption > totalPowerGen) ? (
+                                    <>
+                                        {batWarning(t('batteries.shooting'))}
+                                        {batDrain(batDeficitTimeWeapons, batDeficitBatWeapons)}
+                                        {batRefill(batRefillTimeWeapons, batRefillBatWeapons)}
+                                    </>
+                                ) : null
+                            }
+                            {
+                                (weaponShootingPowerConsumption < totalPowerGen &&
+                                    weaponPassivePowerConsumption !== 0) ? (
+                                    batUnaffected(t('batteries.shooting'))
+                                ) : null
+                            }
+                            {
+                                // ========================== bat warnings combat ( weapons + thrusters ) ==========================
+                                (weaponPassivePowerConsumption <= totalPowerGen) ?
+                                    <>
+                                        {
+                                            (weaponPassivePowerConsumption !== 0 &&
+                                            thrusterCards.length !== 0 &&
+                                            (weaponShootingPowerConsumption + thrusterElectricityConsumption) > totalPowerGen) ? (
+                                                <>
+                                                    {
+                                                        (batRefillBatCombat < 0) ? (
+                                                                <Row className={"stats-error"}>
+                                                                    {t('batteries.combat_error')}
+                                                                </Row>
+                                                            ) :
+                                                            <>
+                                                                {batWarning(t('batteries.combat'))}
+                                                                {batDrain(batDeficitTimeCombat, batDeficitBatCombat)}
+                                                                {batRefill(batRefillTimeCombat, batRefillBatCombat)}
+                                                            </>
+                                                    }
+                                                </>
+                                            ) : null
+                                        }
+                                        {
+                                            ((weaponShootingPowerConsumption + thrusterElectricityConsumption) < totalPowerGen &&
+                                                weaponPassivePowerConsumption !== 0) ? (
+                                                batUnaffected(t('batteries.combat'))
+                                            ) : null
+                                        }
+                                    </>
+                                    : null
+                            }
+                            {
+                                // ========================== bat warnings towing ==========================
+                                (towingPowerDeficit < 0) ? (
+                                    <>
+                                        {batWarning(t('batteries.towing'))}
+                                        {batDrain(batDeficitTimeTowing, batDeficitBatTowing)}
+                                        {batRefill(batRefillTimeTowing, batRefillBatTowing)}
+                                    </>
+                                ) : null
+                            }
+                            {
+                                (towingPowerDeficit >= 0 && towingWeight !== 0) ? (
+                                    batUnaffected(t('batteries.towing'))
+                                ) : null
+                            }
+                            {
+                                // ========================== bat warnings mining ==========================
+                                (miningEquipmentPowerDeficit < 0) ? (
+                                    <>
+                                        {batWarning(t('batteries.mining'))}
+                                        {batDrain(batDeficitTimeMining, batDeficitBatMining)}
+                                        {batRefill(batRefillTimeMining, batRefillBatMining)}
+                                    </>
+                                ) : null
+                            }
+                            {
+                                (miningEquipmentPowerDeficit > 0 &&
+                                    (collectorCount !== 0 || miningLaserCount !== 0)) ? (
+                                    batUnaffected(t('batteries.mining'))
+                                ) : null
+                            }
+                        </Container>
+                        : null
+                }
+            </Card.Body>
+        </Card>
+    }
 }
 
 export default BatStats;

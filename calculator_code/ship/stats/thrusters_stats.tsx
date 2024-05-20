@@ -59,8 +59,8 @@ function ThrustersStat(
         let propellant_consumption = null;
         let electricity_consumption = null;
         let thrust = null;
+        let hasManeuverThrusters = false
         thrusterCards.forEach((thruster) => {
-            setHasManeuverThrusters(false)
             switch (thruster.type) {
                 case 'box':
                     body = get_box_body_from_tier(thruster.tier);
@@ -72,7 +72,7 @@ function ThrustersStat(
                     if (thruster.used_as_maneuver) {
                         totalPropellantConsumption += remove_percentage(propellant_consumption, 10);
                         totalElectricityConsumption += remove_percentage(electricity_consumption, 40);
-                        setHasManeuverThrusters(true)
+                        hasManeuverThrusters = true
                     } else {
                         thrust = remove_percentage((body.thrust + nozzle.thrust) * thruster.quantity, 100 - thrusterEfficiency);
                         totalForwardThrust += thrust;
@@ -90,7 +90,7 @@ function ThrustersStat(
                     if (thruster.used_as_maneuver) {
                         totalPropellantConsumption += remove_percentage(propellant_consumption, 10);
                         totalElectricityConsumption += remove_percentage(electricity_consumption, 40);
-                        setHasManeuverThrusters(true)
+                        hasManeuverThrusters = true
                     } else {
                         thrust = remove_percentage((body.thrust + nozzle.thrust) * thruster.quantity, 100 - thrusterEfficiency);
                         totalForwardThrust += thrust;
@@ -105,7 +105,7 @@ function ThrustersStat(
                     if (thruster.used_as_maneuver) {
                         totalPropellantConsumption += remove_percentage(propellant_consumption, 10);
                         totalElectricityConsumption += remove_percentage(electricity_consumption, 40);
-                        setHasManeuverThrusters(true)
+                        hasManeuverThrusters = true
                     } else {
                         thrust = remove_percentage(body.thrust * thruster.quantity, 100 - thrusterEfficiency);
                         totalForwardThrust += thrust;
@@ -123,7 +123,7 @@ function ThrustersStat(
                         electricity_consumption += remove_percentage(plasma_thruster_ring.electricity_consumption * thruster.rings, 25) * thruster.quantity;
                         totalPropellantConsumption += propellant_consumption
                         totalElectricityConsumption += electricity_consumption;
-                        setHasManeuverThrusters(true)
+                        hasManeuverThrusters = true
                     } else {
                         propellant_consumption = (body.propellant_consumption + plasma_thruster_ring.propellant_consumption * thruster.rings ) * thruster.quantity;
                         electricity_consumption = (body.electricity_consumption + plasma_thruster_ring.electricity_consumption * thruster.rings) * thruster.quantity;
@@ -138,6 +138,7 @@ function ThrustersStat(
         setTotalForwardThrust(totalForwardThrust);
         setPropellantConsumption(totalPropellantConsumption);
         setThrusterElectricityConsumption(totalElectricityConsumption);
+        setHasManeuverThrusters(hasManeuverThrusters)
     }, [setPropellantConsumption, setThrusterElectricityConsumption, setTotalForwardThrust, thrusterCards, thrusterEfficiency]);
 
     const handleDisplay = (e: ChangeEvent<HTMLInputElement>) => {
@@ -145,84 +146,84 @@ function ThrustersStat(
     }
 
     function getThrusterStats() {
-        if (thrusterCards.length === 0) {
-            return <Row>
-                <Col className={"stats-text"} xs={12}>
-                    {t('thruster_stats.no_thrusters')}
+        return <>
+            <Row>
+                {
+                    (overwritePropellantConsumption === 0 && !hasManeuverThrusters) ? (
+                        <Col className={"stats-warning"}>
+                            {t("thruster_stats.no_maneuver_thrusters")}
+                        </Col>
+                    ) : null
+                }
+            </Row>
+            <Row>
+                <Col className={"stats-text"} xs={8}>
+                    {t('thruster_stats.thrust_forward')}
+                </Col>
+                <Col className={"stats-text-numbers"} xs={4}>
+                    {prettyNumber(totalForwardThrust)}
                 </Col>
             </Row>
-        } else {
-            return <>
-                <Row>
-                    {
-                        (overwritePropellantConsumption === 0 && !hasManeuverThrusters) ? (
-                            <Col className={"stats-warning"}>
-                                {t("thruster_stats.no_maneuver_thrusters")}
-                            </Col>
-                        ) : null
-                    }
-                </Row>
-                <Row>
-                    <Col className={"stats-text"} xs={8}>
-                        {t('thruster_stats.thrust_forward')}
-                    </Col>
-                    <Col className={"stats-text-numbers"} xs={4}>
-                        {prettyNumber(totalForwardThrust)}
-                    </Col>
-                </Row>
-                {
-                    (overwritePropellantConsumption !== 0) ? (
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('thruster_stats.overwritten_propellant_consumption')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(overwrittenPropellantConsumption)} p/s
-                            </Col>
-                        </Row>
-                    ) : (
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('thruster_stats.propellant_consumption')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(propellantConsumption)} p/s
-                            </Col>
-                        </Row>
-                    )
-                }
-                <Row>
-                    <Col className={"stats-text"} xs={8}>
-                        {t('thruster_stats.electricity_consumption')}
-                    </Col>
-                    <Col className={"stats-text-numbers"} xs={4}>
-                        {prettyNumber(thrusterElectricityConsumption)} e/s
-                    </Col>
-                </Row>
-            </>
-        }
+            {
+                (overwritePropellantConsumption !== 0) ? (
+                    <Row>
+                        <Col className={"stats-text"} xs={8}>
+                            {t('thruster_stats.overwritten_propellant_consumption')}
+                        </Col>
+                        <Col className={"stats-text-numbers"} xs={4}>
+                            {prettyNumber(overwrittenPropellantConsumption)} p/s
+                        </Col>
+                    </Row>
+                ) : (
+                    <Row>
+                        <Col className={"stats-text"} xs={8}>
+                            {t('thruster_stats.propellant_consumption')}
+                        </Col>
+                        <Col className={"stats-text-numbers"} xs={4}>
+                            {prettyNumber(propellantConsumption)} p/s
+                        </Col>
+                    </Row>
+                )
+            }
+            <Row>
+                <Col className={"stats-text"} xs={8}>
+                    {t('thruster_stats.electricity_consumption')}
+                </Col>
+                <Col className={"stats-text-numbers"} xs={4}>
+                    {prettyNumber(thrusterElectricityConsumption)} e/s
+                </Col>
+            </Row>
+        </>
     }
 
-    return <Card>
-        <Card.Header className={"stats-card-header"}>
-            <h4 className={"stats-sub-title"}>{t('thruster_stats.title')}</h4>
-            <Form className={"stats-toggle"}>
-                <Form.Check
-                    type="switch"
-                    checked={Display}
-                    onChange={handleDisplay}
-                />
-            </Form>
-        </Card.Header>
-        <Card.Body>
-            {
-                (Display) ?
-                    <Container className={"stats-container"}>
-                        {getThrusterStats()}
-                    </Container> : null
-            }
-        </Card.Body>
-    </Card>
+    if (thrusterCards.length === 0) {
+        return <Card>
+            <Card.Header>
+                {t('thruster_stats.no_thrusters')}
+            </Card.Header>
+        </Card>
+    } else {
+        return <Card>
+            <Card.Header className={"stats-card-header"}>
+                <h4 className={"stats-sub-title"}>{t('thruster_stats.title')}</h4>
+                <Form className={"stats-toggle"}>
+                    <Form.Check
+                        type="switch"
+                        checked={Display}
+                        onChange={handleDisplay}
+                    />
+                </Form>
+            </Card.Header>
+            <Card.Body>
+                {
+                    (Display) ?
+                        <Container className={"stats-container"}>
+                            {getThrusterStats()}
+                        </Container> : null
+                }
+            </Card.Body>
+        </Card>
+    }
 }
 
 export default ThrustersStat;

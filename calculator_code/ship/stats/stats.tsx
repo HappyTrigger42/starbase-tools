@@ -122,12 +122,26 @@ function Stats (
             totalHeatFuelChamber={totalHeatFuelChamber}
             setTotalHeatFuelChamber={setTotalHeatFuelChamber}
         />
+        <FlightStat
+            calculatedSpeed={calculatedSpeed}
+            setCalculatedSpeed={setCalculatedSpeed}
+            overwriteSpeed={overwriteSpeed}
+            overwrittenSpeedValue={overwrittenSpeedValue}
+            cargoCount={cargoCount}
+            cargoWeight={cargoWeight}
+            totalPropellant={totalPropellant}
+            propellantConsumption={propellantConsumption}
+            overwritePropellantConsumption={overwritePropellantConsumption}
+            overwrittenPropellantConsumption={overwrittenPropellantConsumption}
+            totalForwardThrust={totalForwardThrust}
+            shipWeight={shipWeight}
+            thrusterCards={thrusterCards}
+        />
         <WeaponsStat
             autoCannons={autoCannons}
             laserCannons={laserCannons}
             plasmaCannons={plasmaCannons}
             railGuns={railGuns}
-            totalPowerGen={totalPowerGen}
             weaponPassivePowerConsumption={weaponPassivePowerConsumption}
             setWeaponPassivePowerConsumption={setWeaponPassivePowerConsumption}
             weaponShootingPowerConsumption={weaponShootingPowerConsumption}
@@ -152,6 +166,7 @@ function Stats (
             miningLaserCount={miningLaserCount}
             towingWeight={towingWeight}
             thrusterElectricityConsumption={thrusterElectricityConsumption}
+            thrusterCards={thrusterCards}
         />
         <ToolsStat
             towingWeight={towingWeight}
@@ -175,20 +190,6 @@ function Stats (
             setPropellantConsumption={setPropellantConsumption}
             thrusterElectricityConsumption={thrusterElectricityConsumption}
             setThrusterElectricityConsumption={setThrusterElectricityConsumption}
-        />
-        <FlightStat
-            calculatedSpeed={calculatedSpeed}
-            setCalculatedSpeed={setCalculatedSpeed}
-            overwriteSpeed={overwriteSpeed}
-            overwrittenSpeedValue={overwrittenSpeedValue}
-            cargoCount={cargoCount}
-            cargoWeight={cargoWeight}
-            totalPropellant={totalPropellant}
-            propellantConsumption={propellantConsumption}
-            overwritePropellantConsumption={overwritePropellantConsumption}
-            overwrittenPropellantConsumption={overwrittenPropellantConsumption}
-            totalForwardThrust={totalForwardThrust}
-            shipWeight={shipWeight}
         />
     </div>
 }

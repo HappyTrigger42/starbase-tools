@@ -3,6 +3,7 @@ import {Card, Col, Container, Form, Row} from "react-bootstrap";
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {prettyNumber} from "../../../../utilities/pretty_number";
 import {useTranslation} from "react-i18next";
+import {Thruster} from "../../cards/thrusters_cards/thruster_types";
 
 function FlightStats({
                          calculatedSpeed,
@@ -16,7 +17,8 @@ function FlightStats({
                          overwritePropellantConsumption,
                          overwrittenPropellantConsumption,
                          totalForwardThrust,
-                         shipWeight
+                         shipWeight,
+                         thrusterCards
                      } : {
     calculatedSpeed: number,
     setCalculatedSpeed: React.Dispatch<React.SetStateAction<number>>;
@@ -29,7 +31,8 @@ function FlightStats({
     overwritePropellantConsumption: number,
     overwrittenPropellantConsumption: number,
     totalForwardThrust: number,
-    shipWeight: number
+    shipWeight: number,
+    thrusterCards: Thruster[],
 }) {
 
     const { t } = useTranslation('ship_calc');
@@ -154,82 +157,90 @@ function FlightStats({
         setDisplay(e.target.checked)
     }
 
-    return <Card className={"stats-card"}>
-        <Card.Header className={"stats-card-header"}>
-            <h4 className={"stats-sub-title"}>{t('speed.title')}</h4>
-            <Form className={"stats-toggle"}>
-                <Form.Check
-                    type="switch"
-                    checked={Display}
-                    onChange={handleDisplay}
-                />
-            </Form>
-        </Card.Header>
-        <Card.Body>
-            {
-                (Display) ?
-                    <Container className={"stats-container"}>
-                        <Row>
-                            {metricsStr}
-                        </Row>
-                        <Row>
-                            {
-                                (cargoCount > 0 && overwriteSpeed === 0) ? (
-                                    displayStat2(t('speed.speed') + " [?]", t('meters_per_second'), prettyNumber(calculatedSpeed), prettyNumber(speedWithCargo))
-                                ) : (
-                                    displayStat(t('speed.speed') + " [?]", t('meters_per_second'), prettyNumber(calculatedSpeed))
-                                )
-                            }
-                        </Row>
-                        <Row>
-                            {
-                                (cargoCount > 0 && overwriteSpeed === 0) ? (
-                                    displayStat2(t('speed.estimated_range'), t('km'), prettyNumber(PropellantDistance), prettyNumber(PropellantDistanceWithCargo))
-                                ) : (
-                                    displayStat(t('speed.estimated_range'), t('km'), prettyNumber(PropellantDistance))
-                                )
-                            }
-                        </Row>
-                        <Row>
-                            {
-                                (cargoCount > 0) ? (
-                                    displayStat2(t('speed.ship_weight'), t('kg'), prettyNumber(shipWeight), prettyNumber(shipWeight + cargoWeight * cargoCount))
-                                ) : (
-                                    displayStat(t('speed.ship_weight'), t('kg'), prettyNumber(shipWeight))
-                                )
-                            }
-                        </Row>
-                        <Row>
-                            {
-                                (cargoCount > 0 && overwriteSpeed === 0) ? (
-                                    displayStat2(t('speed.estimated_time'), "", time, "")
-                                ) : (
-                                    displayStat(t('speed.estimated_time'), "", time)
-                                )
-                            }
-                        </Row>
-                        <Row>
-                            {
-                                (totalPropellant === 0) ? (
-                                    <Col className={"stats-warning"}>
-                                        {t("speed.no_propellant")}
-                                    </Col>
-                                ) : null
-                            }
-                        </Row>
-                        <Row>
-                            {
-                                (totalPropellant !== 0 && overwritePropellantConsumption && overwrittenPropellantConsumption === 0) ? (
-                                    <Col className={"stats-warning"}>
-                                        {t("speed.no_propellant_consumption")}
-                                    </Col>
-                                ) : null
-                            }
-                        </Row>
-                    </Container> : null
-            }
-        </Card.Body>
-    </Card>
+    if (thrusterCards.length === 0) {
+        return <Card>
+            <Card.Header>
+                {t('thruster_stats.no_thrusters')}
+            </Card.Header>
+        </Card>
+    } else {
+        return <Card className={"stats-card"}>
+            <Card.Header className={"stats-card-header"}>
+                <h4 className={"stats-sub-title"}>{t('speed.title')}</h4>
+                <Form className={"stats-toggle"}>
+                    <Form.Check
+                        type="switch"
+                        checked={Display}
+                        onChange={handleDisplay}
+                    />
+                </Form>
+            </Card.Header>
+            <Card.Body>
+                {
+                    (Display) ?
+                        <Container className={"stats-container"}>
+                            <Row>
+                                {metricsStr}
+                            </Row>
+                            <Row>
+                                {
+                                    (cargoCount > 0 && overwriteSpeed === 0) ? (
+                                        displayStat2(t('speed.speed') + " [?]", t('meters_per_second'), prettyNumber(calculatedSpeed), prettyNumber(speedWithCargo))
+                                    ) : (
+                                        displayStat(t('speed.speed') + " [?]", t('meters_per_second'), prettyNumber(calculatedSpeed))
+                                    )
+                                }
+                            </Row>
+                            <Row>
+                                {
+                                    (cargoCount > 0 && overwriteSpeed === 0) ? (
+                                        displayStat2(t('speed.estimated_range'), t('km'), prettyNumber(PropellantDistance), prettyNumber(PropellantDistanceWithCargo))
+                                    ) : (
+                                        displayStat(t('speed.estimated_range'), t('km'), prettyNumber(PropellantDistance))
+                                    )
+                                }
+                            </Row>
+                            <Row>
+                                {
+                                    (cargoCount > 0) ? (
+                                        displayStat2(t('speed.ship_weight'), t('kg'), prettyNumber(shipWeight), prettyNumber(shipWeight + cargoWeight * cargoCount))
+                                    ) : (
+                                        displayStat(t('speed.ship_weight'), t('kg'), prettyNumber(shipWeight))
+                                    )
+                                }
+                            </Row>
+                            <Row>
+                                {
+                                    (cargoCount > 0 && overwriteSpeed === 0) ? (
+                                        displayStat2(t('speed.estimated_time'), "", time, "")
+                                    ) : (
+                                        displayStat(t('speed.estimated_time'), "", time)
+                                    )
+                                }
+                            </Row>
+                            <Row>
+                                {
+                                    (totalPropellant === 0) ? (
+                                        <Col className={"stats-warning"}>
+                                            {t("speed.no_propellant")}
+                                        </Col>
+                                    ) : null
+                                }
+                            </Row>
+                            <Row>
+                                {
+                                    (totalPropellant !== 0 && overwritePropellantConsumption && overwrittenPropellantConsumption === 0) ? (
+                                        <Col className={"stats-warning"}>
+                                            {t("speed.no_propellant_consumption")}
+                                        </Col>
+                                    ) : null
+                                }
+                            </Row>
+                        </Container> : null
+                }
+            </Card.Body>
+        </Card>
+    }
 }
 
 export default FlightStats;

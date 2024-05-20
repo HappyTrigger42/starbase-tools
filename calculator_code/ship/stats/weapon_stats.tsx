@@ -11,7 +11,6 @@ function WeaponsStats (
         laserCannons,
         plasmaCannons,
         railGuns,
-        totalPowerGen,
         weaponPassivePowerConsumption,
         setWeaponPassivePowerConsumption,
         weaponShootingPowerConsumption,
@@ -24,7 +23,6 @@ function WeaponsStats (
         laserCannons: number;
         plasmaCannons: number;
         railGuns: number;
-        totalPowerGen: number;
         weaponPassivePowerConsumption: number;
         setWeaponPassivePowerConsumption: React.Dispatch<React.SetStateAction<number>>;
         weaponShootingPowerConsumption: number;
@@ -95,66 +93,74 @@ function WeaponsStats (
         setDisplay(e.target.checked)
     }
 
-    return <Card className={"stats-card"}>
-        <Card.Header className={"stats-card-header"}>
-            <h4 className={"stats-sub-title"}>{t('weapons_stats.title')}</h4>
-            <Form className={"stats-toggle"}>
-                <Form.Check
-                    type="switch"
-                    checked={Display}
-                    onChange={handleDisplay}
-                />
-            </Form>
-        </Card.Header>
-        <Card.Body>
-            {
-                (Display) ?
-                    <Container className={"stats-container"}>
-                        <Row>
-                            <div className={"stats-text"}>
-                                <div className={weaponIssue ? "stats-error" : ""}>
-                                    {weaponCountString}
-                                </div>
-                            </div>
-                        </Row>
-                        {
-                            (miningLaserCount > 0 && weaponCount > 30) ?
-                                <Row>
-                                    <div className={"stats-text"}>
-                                        <div className={weaponIssue ? "stats-warning" : ""}>
-                                            {t('weapons_stats.mining_laser_weapons')}
-                                        </div>
+    if (railGuns === 0 && laserCannons === 0 && autoCannons === 0 && plasmaCannons === 0) {
+        return <Card>
+            <Card.Header>
+                {t('weapons_stats.no_weapons')}
+            </Card.Header>
+        </Card>
+    } else {
+        return <Card className={"stats-card"}>
+            <Card.Header className={"stats-card-header"}>
+                <h4 className={"stats-sub-title"}>{t('weapons_stats.title')}</h4>
+                <Form className={"stats-toggle"}>
+                    <Form.Check
+                        type="switch"
+                        checked={Display}
+                        onChange={handleDisplay}
+                    />
+                </Form>
+            </Card.Header>
+            <Card.Body>
+                {
+                    (Display) ?
+                        <Container className={"stats-container"}>
+                            <Row>
+                                <div className={"stats-text"}>
+                                    <div className={weaponIssue ? "stats-error" : ""}>
+                                        {weaponCountString}
                                     </div>
-                                </Row> : null
-                        }
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                {t('weapons_stats.passive_power_consumption')}
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(weaponPassivePowerConsumption)} {t('elec_per_second')}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                shooting power consumption
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(weaponShootingPowerConsumption)} {t('elec_per_second')}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col className={"stats-text"} xs={8}>
-                                heat generated when shooting
-                            </Col>
-                            <Col className={"stats-text-numbers"} xs={4}>
-                                {prettyNumber(weaponHeatGeneratedWhenShooting)} {t('heat_per_second')}
-                            </Col>
-                        </Row>
-                    </Container> : null
-            }
-        </Card.Body>
-    </Card>
+                                </div>
+                            </Row>
+                            {
+                                (miningLaserCount > 0 && weaponCount > 30) ?
+                                    <Row>
+                                        <div className={"stats-text"}>
+                                            <div className={weaponIssue ? "stats-warning" : ""}>
+                                                {t('weapons_stats.mining_laser_weapons')}
+                                            </div>
+                                        </div>
+                                    </Row> : null
+                            }
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    {t('weapons_stats.passive_power_consumption')}
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(weaponPassivePowerConsumption)} {t('elec_per_second')}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    shooting power consumption
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(weaponShootingPowerConsumption)} {t('elec_per_second')}
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"stats-text"} xs={8}>
+                                    heat generated when shooting
+                                </Col>
+                                <Col className={"stats-text-numbers"} xs={4}>
+                                    {prettyNumber(weaponHeatGeneratedWhenShooting)} {t('heat_per_second')}
+                                </Col>
+                            </Row>
+                        </Container> : null
+                }
+            </Card.Body>
+        </Card>
+    }
 }
 
 export default WeaponsStats;

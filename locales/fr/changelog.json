@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "16" : {
+      "version": "0.5.3",
+      "date": "2024/05/20",
+      "changes": "- implémenté les statistiques de combat dans le calculateur de navire\n- réorganisé la disposition du calculateur de navire pour regrouper les éléments liés\n- les statistiques sont cachées s'il n'y a pas de valeur à afficher\n- corrections de bugs"
+    },
     "15" : {
       "version": "0.5.2",
       "date": "2024/04/23",

@@ -4,16 +4,13 @@
   "tasks": {
     "1": "add a dark mode",
     "2": "more css to make the website nicer",
-    "3": "add a discord bot for notifications of changes on the website",
-    "4": "add an about me page",
-    "5": "research efficiency calculator",
-    "6": "add at least 2 or 3 more managed languages",
-    "7": "better loading times on mobile",
-    "8": "alloy calculation",
-    "9": "market prices",
-    "10": "add flight time based on rods ( big gens / gens )",
-    "11": "better heat calculations ( passive / given to radiator directly )",
-    "12": "add a page to list the stats of the components as used by the website and show how they are obtained",
-    "13": "the plasmas should have quantities just like the other thrusters in the thruster optimisation calculator"
+    "3": "add an about me page",
+    "4": "research efficiency calculator",
+    "5": "add at least 2 or 3 more managed languages",
+    "6": "alloy calculation",
+    "7": "market prices",
+    "8": "add flight time based on rods ( big gens / gens )",
+    "9": "better heat calculations ( passive / given to radiator directly )",
+    "10": "the plasmas should have quantities just like the other thrusters in the thruster optimisation calculator"
   }
 }
