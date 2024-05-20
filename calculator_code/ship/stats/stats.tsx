@@ -137,19 +137,6 @@ function Stats (
             shipWeight={shipWeight}
             thrusterCards={thrusterCards}
         />
-        <WeaponsStat
-            autoCannons={autoCannons}
-            laserCannons={laserCannons}
-            plasmaCannons={plasmaCannons}
-            railGuns={railGuns}
-            weaponPassivePowerConsumption={weaponPassivePowerConsumption}
-            setWeaponPassivePowerConsumption={setWeaponPassivePowerConsumption}
-            weaponShootingPowerConsumption={weaponShootingPowerConsumption}
-            setWeaponShootingPowerConsumption={setWeaponShootingPowerConsumption}
-            weaponHeatGeneratedWhenShooting={weaponHeatGeneratedWhenShooting}
-            setWeaponHeatGeneratedWhenShooting={setWeaponHeatGeneratedWhenShooting}
-            miningLaserCount={miningLaserCount}
-        />
         <HeatManagement
             totalHeatGen={totalHeatGen}
             totalHeatFuelChamber={totalHeatFuelChamber}
@@ -168,17 +155,6 @@ function Stats (
             thrusterElectricityConsumption={thrusterElectricityConsumption}
             thrusterCards={thrusterCards}
         />
-        <ToolsStat
-            towingWeight={towingWeight}
-            collectorCount={collectorCount}
-            collectorPower={collectorPower}
-            miningLaserCount={miningLaserCount}
-            totalPowerGen={totalPowerGen}
-            towingPowerDeficit={towingPowerDeficit}
-            setTowingPowerDeficit={setTowingPowerDeficit}
-            miningEquipmentPowerDeficit={miningEquipmentPowerDeficit}
-            setMiningEquipmentPowerDeficit={setMiningEquipmentPowerDeficit}
-        />
         <ThrustersStat
             thrusterCards={thrusterCards}
             totalForwardThrust={totalForwardThrust}
@@ -190,6 +166,30 @@ function Stats (
             setPropellantConsumption={setPropellantConsumption}
             thrusterElectricityConsumption={thrusterElectricityConsumption}
             setThrusterElectricityConsumption={setThrusterElectricityConsumption}
+        />
+        <WeaponsStat
+            autoCannons={autoCannons}
+            laserCannons={laserCannons}
+            plasmaCannons={plasmaCannons}
+            railGuns={railGuns}
+            weaponPassivePowerConsumption={weaponPassivePowerConsumption}
+            setWeaponPassivePowerConsumption={setWeaponPassivePowerConsumption}
+            weaponShootingPowerConsumption={weaponShootingPowerConsumption}
+            setWeaponShootingPowerConsumption={setWeaponShootingPowerConsumption}
+            weaponHeatGeneratedWhenShooting={weaponHeatGeneratedWhenShooting}
+            setWeaponHeatGeneratedWhenShooting={setWeaponHeatGeneratedWhenShooting}
+            miningLaserCount={miningLaserCount}
+        />
+        <ToolsStat
+            towingWeight={towingWeight}
+            collectorCount={collectorCount}
+            collectorPower={collectorPower}
+            miningLaserCount={miningLaserCount}
+            totalPowerGen={totalPowerGen}
+            towingPowerDeficit={towingPowerDeficit}
+            setTowingPowerDeficit={setTowingPowerDeficit}
+            miningEquipmentPowerDeficit={miningEquipmentPowerDeficit}
+            setMiningEquipmentPowerDeficit={setMiningEquipmentPowerDeficit}
         />
     </div>
 }

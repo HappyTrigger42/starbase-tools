@@ -19,7 +19,11 @@ function Ship(
         overwritePropellantConsumption,
         setOverwritePropellantConsumption,
         overwrittenPropellantConsumption,
-        setOverwrittenPropellantConsumption
+        setOverwrittenPropellantConsumption,
+        cargoCount,
+        setCargoCount,
+        cargoWeight,
+        setCargoWeight
     } : {
         shipWeight: number,
         setShipWeight: React.Dispatch<React.SetStateAction<number>>;
@@ -35,6 +39,10 @@ function Ship(
         setOverwritePropellantConsumption: React.Dispatch<React.SetStateAction<number>>;
         overwrittenPropellantConsumption: number,
         setOverwrittenPropellantConsumption: React.Dispatch<React.SetStateAction<number>>;
+        cargoCount: number,
+        setCargoCount: React.Dispatch<React.SetStateAction<number>>;
+        cargoWeight: number,
+        setCargoWeight: React.Dispatch<React.SetStateAction<number>>;
     }) {
     const { t } = useTranslation('ship_calc');
 
@@ -62,6 +70,18 @@ function Ship(
         setOverwrittenPropellantConsumption(count);
     }
 
+    function handleCargoCountChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const count = clamp(Number(e.target.value), 0, 9999);
+        e.target.value = count.toString()
+        setCargoCount(count);
+    }
+
+    function handleCargoWeightChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const count = clamp(Number(e.target.value), 0, 40000);
+        e.target.value = count.toString()
+        setCargoWeight(count);
+    }
+
     return (
         <Card>
             <Card.Header>
@@ -82,6 +102,32 @@ function Ship(
                                 type="number"
                                 value={shipWeight}
                                 onChange={e => shipWeightChange(e)}
+                            />
+                        </Col>
+                    </Row>
+                    <Row className={"card-attribute"}>
+                        <Col xs={8}>
+                            <div className={"card-attribute-text"}>{t('cargo.cargo_count')}</div>
+                        </Col>
+                        <Col xs={4}>
+                            <input
+                                className={"card-attribute-input"}
+                                type="number"
+                                value={cargoCount}
+                                onChange={e => handleCargoCountChange(e)}
+                            />
+                        </Col>
+                    </Row>
+                    <Row className={"card-attribute"}>
+                        <Col xs={8}>
+                            <div className={"card-attribute-text"}>{t('cargo.cargo_weight')} [?]</div>
+                        </Col>
+                        <Col xs={4}>
+                            <input
+                                className={"card-attribute-input"}
+                                type="number"
+                                value={cargoWeight}
+                                onChange={e => handleCargoWeightChange(e)}
                             />
                         </Col>
                     </Row>

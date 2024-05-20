@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "17" : {
+      "version": "0.5.4",
+      "date": "2024/05/20",
+      "changes": "reorganized the display of the ship calculator to regroup the related elements together"
+    },
     "16" : {
       "version": "0.5.3",
       "date": "2024/05/20",

@@ -5,7 +5,6 @@ import Stats from "./stats/stats";
 import Ship from "./ship/ship";
 import Power from "./power/power";
 import Machinery from "./machinery/machinery";
-import Cargo from "./cargo/cargo";
 import Propellant from "./propellant/propellant";
 import Weapons from "./weapons/weapons";
 import React, {useEffect, useState} from "react";
@@ -231,12 +230,20 @@ function ShipCalc() {
                         setOverwritePropellantConsumption={setOverwritePropellantConsumption}
                         overwrittenPropellantConsumption={overwrittenPropellantConsumption}
                         setOverwrittenPropellantConsumption={setOverwrittenPropellantConsumption}
-                    />
-                    <Cargo
                         cargoCount={cargoCount}
                         setCargoCount={setCargoCount}
                         cargoWeight={cargoWeight}
                         setCargoWeight={setCargoWeight}
+                    />
+                    <Propellant
+                        totalPropellant={totalPropellant}
+                        setTotalPropellant={setTotalPropellant}
+                        smallPropellantCount={smallPropellantCount}
+                        setSmallPropellantCount={setSmallPropellantCount}
+                        mediumPropellantCount={mediumPropellantCount}
+                        setMediumPropellantCount={setMediumPropellantCount}
+                        bigPropellantCount={bigPropellantCount}
+                        setBigPropellantCount={setBigPropellantCount}
                     />
                     <Weapons
                         autoCannons={autoCannons}
@@ -257,16 +264,6 @@ function ShipCalc() {
                         setMiningLaserCount={setMiningLaserCount}
                         towingWeight={towingWeight}
                         setTowingWeight={setTowingWeight}
-                    />
-                    <Propellant
-                        totalPropellant={totalPropellant}
-                        setTotalPropellant={setTotalPropellant}
-                        smallPropellantCount={smallPropellantCount}
-                        setSmallPropellantCount={setSmallPropellantCount}
-                        mediumPropellantCount={mediumPropellantCount}
-                        setMediumPropellantCount={setMediumPropellantCount}
-                        bigPropellantCount={bigPropellantCount}
-                        setBigPropellantCount={setBigPropellantCount}
                     />
                 </Col>
                 <Col xl={3} md={6} xs={12}>
