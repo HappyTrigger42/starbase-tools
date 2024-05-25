@@ -2,7 +2,7 @@
   "title": "todo list",
   "no-tasks": "currently no features are planned",
   "tasks": {
-    "1": "add a dark mode",
+    "1": "better heat calculations ( passive / given to radiator directly )",
     "2": "more css to make the website nicer",
     "3": "add an about me page",
     "4": "research efficiency calculator",
@@ -10,7 +10,6 @@
     "6": "alloy calculation",
     "7": "market prices",
     "8": "add flight time based on rods ( big gens / gens )",
-    "9": "better heat calculations ( passive / given to radiator directly )",
-    "10": "the plasmas should have quantities just like the other thrusters in the thruster optimisation calculator"
+    "9": "the plasmas should have quantities just like the other thrusters in the thruster optimisation calculator"
   }
 }

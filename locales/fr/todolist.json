@@ -2,7 +2,7 @@
   "title": "choses à faire",
   "no-tasks": "aucune fonctionnalité n'est prévue pour le moment",
   "tasks": {
-    "1": "ajouter un mode sombre",
+    "1": "meilleurs calcualtions pour la chaleur ( dissipation passive / donné au radiateur directement )",
     "2": "plus de CSS pour rendre le site plus agréable",
     "3": "ajouter une page à propos de moi",
     "4": "calculateur d'efficacité de recherche",
@@ -10,7 +10,6 @@
     "6": "calculateur d'alliages",
     "7": "prix des marchés",
     "8": "ajouter le temps de vol avec les rods ( gros gens / gens )",
-    "9": "meilleurs calcualtions pour la chaleur ( dissipation passive / donné au radiateur directement )",
-    "10": "les plasmas devraient avoir un attribut de quantitté comme les autres thrusters dans le calculatieur d'optimisation des thrusters"
+    "9": "les plasmas devraient avoir un attribut de quantitté comme les autres thrusters dans le calculatieur d'optimisation des thrusters"
   }
 }

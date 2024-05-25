@@ -15,27 +15,28 @@ import {prettyNumber} from "../../../../utilities/pretty_number";
 import {useTranslation} from "react-i18next";
 
 
-function PowerGenStats ({
-                            generatorCards,
-                            generatorDensity,
-                            setTotalPowerGen,
-                            overwriteFuelChamberCount,
-                            overwrittenFuelChamberCount,
-                            totalHeatGen,
-                            setTotalHeatGen,
-                            totalHeatFuelChamber,
-                            setTotalHeatFuelChamber,
-                        }: {
-    generatorCards: Generator[]
-    generatorDensity: number
-    setTotalPowerGen: React.Dispatch<React.SetStateAction<number>>
-    overwriteFuelChamberCount: number
-    overwrittenFuelChamberCount: number
-    totalHeatGen: number,
-    setTotalHeatGen: React.Dispatch<React.SetStateAction<number>>,
-    totalHeatFuelChamber: number,
-    setTotalHeatFuelChamber: React.Dispatch<React.SetStateAction<number>>,
-}) {
+function PowerGenStats (
+    {
+        generatorCards,
+        generatorDensity,
+        setTotalPowerGen,
+        overwriteFuelChamberCount,
+        overwrittenFuelChamberCount,
+        totalHeatGen,
+        setTotalHeatGen,
+        totalHeatFuelChamber,
+        setTotalHeatFuelChamber,
+    }: {
+        generatorCards: Generator[]
+        generatorDensity: number
+        setTotalPowerGen: React.Dispatch<React.SetStateAction<number>>
+        overwriteFuelChamberCount: number
+        overwrittenFuelChamberCount: number
+        totalHeatGen: number,
+        setTotalHeatGen: React.Dispatch<React.SetStateAction<number>>,
+        totalHeatFuelChamber: number,
+        setTotalHeatFuelChamber: React.Dispatch<React.SetStateAction<number>>,
+    }) {
 
     const { t } = useTranslation('ship_calc');
 

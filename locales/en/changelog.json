@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "18" : {
+      "version": "0.6.0",
+      "date": "2024/05/25",
+      "changes": "added a dark mode"
+    },
     "17" : {
       "version": "0.5.4",
       "date": "2024/05/20",
