@@ -68,15 +68,15 @@ function CapshipHalls(
                             <Button variant="primary"
                                     onClick={handleAddCapShipHall}
                                     className={""}>
-                                {t('add_capship_hall')}</Button>
+                                {t('add.add_capship_hall')}</Button>
                             <Button variant="primary"
                                     onClick={handleAddShipDesigner}
                                     className={""}>
-                                {t('add_shipdesigner')}</Button>
+                                {t('add.add_shipdesigner')}</Button>
                             <Button variant="primary"
                                     onClick={handleAddFactoryHall}
                                     className={""}>
-                                {t('add_factory_hall')}</Button>
+                                {t('add.add_factory_hall')}</Button>
                         </ButtonGroup>
                     </Row>
                     <ModuleLine

@@ -49,7 +49,7 @@ function CapshipThrusters(
                             <Button variant="primary"
                                     onClick={handleAddThrusterModule}
                                     className={""}>
-                                {t('add_thruster')}
+                                {t('add.add_thruster')}
                             </Button>
                         </ButtonGroup>
                     </Row>

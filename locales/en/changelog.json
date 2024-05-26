@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "19" : {
+      "version": "0.6.1",
+      "date": "2024/05/26",
+      "changes": "added a round stack button for the capship price calculator"
+    },
     "18" : {
       "version": "0.6.0",
       "date": "2024/05/25",

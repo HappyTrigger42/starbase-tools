@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "19" : {
+      "version": "0.6.1",
+      "date": "2024/05/26",
+      "changes": "ajouté un bouton pour arrondir le prix des stacks pour le calculateur de prix de capship"
+    },
     "18" : {
       "version": "0.6.0",
       "date": "2024/05/25",

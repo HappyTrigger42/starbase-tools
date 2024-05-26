@@ -1,6 +1,6 @@
 import "./capship_resources.css"
-import {Card, Col, Container, Form, Row} from "react-bootstrap";
-import React, {ChangeEvent, useEffect, useState} from "react";
+import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import getNewResourceProp, {add_props} from "../../values/ressources";
 import {
@@ -55,7 +55,7 @@ function CapShipResources(
         capShipShipDesignerEdgeCount,
         capShipFactoryHallCornerCount,
         capShipFactoryHallEdgeCount,
-    }:{
+    }: {
         exoriumProcessingUnitCount: number,
         exoriumFuelTankCount: number,
         fastTravelCoreModuleCount: number,
@@ -78,14 +78,20 @@ function CapShipResources(
         capShipFactoryHallCornerCount: number,
         capShipFactoryHallEdgeCount: number,
     }) {
-    const { t } = useTranslation('cap_ship_calc');
+    const {t} = useTranslation('cap_ship_calc');
 
     const [sum, setSum] = React.useState(getNewResourceProp())
     const [total, setTotal] = React.useState(0)
+    const [totalStacks, setTotalStacks] = React.useState(0)
     const [sort_by_name, setSort_by_name] = useState(true)
+    const [round_stacks, setRound_stacks] = useState(false)
 
-    const handleSortByName = (e: ChangeEvent<HTMLInputElement>) => {
-        setSort_by_name(e.target.checked)
+    const handleSortByName = () => {
+        setSort_by_name(!sort_by_name)
+    }
+
+    const handleRoundStacks = () => {
+        setRound_stacks(!round_stacks)
     }
 
     useEffect(() => {
@@ -115,16 +121,19 @@ function CapShipResources(
         const keys = Object.keys(prop_sum)
         const values = Object.values(prop_sum)
         let tl = 0
+        let tls = 0
         keys.forEach((key, index) => {
+            tls += Math.ceil(values[index] / stack_value)
             tl += values[index]
         })
+        setTotalStacks(tls)
         setTotal(tl)
     }, [cubeCount, exoriumFuelTankCount, exoriumProcessingUnitCount, fastTravelCoreModuleCount,
         fastTravelPropellantTankCount, generatorModuleCount, longFrameCount, mediumFrameCount,
         reconstructionMachineCount, shieldGeneratorCount, thrusterModuleFrameCount, thrusterModuleNozzleCount,
         thrusterModuleNozzleRingCount, thrusterModuleNozzleSupportCount, cubeWallV1Count, capShipHallCornerCount,
         capShipHallEdgeCount, capShipShipDesignerCornerCount, capShipShipDesignerEdgeCount,
-        capShipFactoryHallCornerCount, capShipFactoryHallEdgeCount]);
+        capShipFactoryHallCornerCount, capShipFactoryHallEdgeCount, round_stacks]);
 
     function display_resources() {
         let entries = Object.entries(sum);
@@ -140,7 +149,15 @@ function CapShipResources(
                         {key}
                     </Col>
                     <Col xs={3}>
-                        {prettyNumber(value / stack_value)} {t('stacks')}
+                        {
+                            (round_stacks) ?
+                                <>
+                                    {prettyNumber(Math.ceil(value / stack_value))} {t('stacks')}
+                                </> :
+                                <>
+                                    {prettyNumber(value / stack_value)} {t('stacks')}
+                                </>
+                        }
                     </Col>
                     <Col xs={3}>
                         {prettyNumber(value)} {t('kilo_voxels')}
@@ -158,14 +175,24 @@ function CapShipResources(
                 <Card.Header className={"stats-card-header"}>
                     <h3>{t('required_resources')}</h3>
                     <div className={"capship-toggle"}>
-                        <span>{t('sort_by_stacks')}</span>
-                        <Form>
-                            <Form.Check
-                                type="switch"
-                                checked={sort_by_name}
-                                onChange={handleSortByName}
-                            />
-                        </Form>
+                        <Button variant="primary"
+                                className={"calc-setting-button"}
+                                onClick={handleSortByName}>
+                            {
+                                (sort_by_name) ?
+                                    <span>{t('sort.sort_by_stacks')}</span> :
+                                    <span>{t('sort.sort_by_name')}</span>
+                            }
+                        </Button>
+                        <Button variant="primary"
+                                className={"calc-setting-button"}
+                                onClick={handleRoundStacks}>
+                            {
+                                (round_stacks) ?
+                                    <span>{t('sort.round_values')}</span> :
+                                    <span>{t('sort.exact_value')}</span>
+                            }
+                        </Button>
                     </div>
                 </Card.Header>
                 <Card.Body>
@@ -176,7 +203,15 @@ function CapShipResources(
                                 {t('total')}
                             </Col>
                             <Col xs={3}>
-                                {prettyNumber(total / stack_value)} {t('stacks')}
+                                {
+                                    (round_stacks) ?
+                                        <>
+                                            {prettyNumber(totalStacks)} {t('stacks')}
+                                        </> :
+                                        <>
+                                            {prettyNumber(total / stack_value)} {t('stacks')}
+                                        </>
+                                }
                             </Col>
                             <Col xs={3}>
                                 {prettyNumber(total)} {t('kilo_voxels')}

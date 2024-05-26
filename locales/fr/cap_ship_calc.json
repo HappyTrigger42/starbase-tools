@@ -7,6 +7,18 @@
   "link": "le lien a été enregistré dans le presse-papiers",
   "yes": "oui",
   "no": "non",
+  "sort": {
+    "sort_by_stacks": "trier par quantité",
+    "sort_by_name": "trier par nom",
+    "round_values": "arrondir stacks",
+    "exact_value": "valeurs exactes"
+  },
+  "add": {
+    "add_capship_hall": "ajouter un hall de vaisseau capital",
+    "add_factory_hall": "ajouter un factory hall taille max",
+    "add_shipdesigner": "ajouter un concepteur de navire taille max",
+    "add_thruster": "ajouter propulseur complet"
+  },
   "quantity": "quantité",
   "required_resources": "ressources requises",
   "modules": "modules",
@@ -16,11 +28,6 @@
   "thrusters": "propulseurs plasma",
   "total": "Total",
   "halls": "halls",
-  "add_capship_hall": "ajouter un hall de vaisseau capital",
-  "add_factory_hall": "ajouter un factory hall taille max",
-  "add_shipdesigner": "ajouter un concepteur de navire taille max",
-  "sort_by_stacks": "trier par nom",
-  "add_thruster": "ajouter propulseur complet",
   "too_many_nozzles": "il y a plus de buses que de cadres de module de propulseur",
   "too_many_supports": "il y a plus de supports que de modules d'anneau de propulseur",
   "too_many_rings": "il y a plus d'anneaux que de cadres de module de propulseur",

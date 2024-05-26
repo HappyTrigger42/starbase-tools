@@ -7,6 +7,18 @@
   "link": "link was saved to the clipboard",
   "yes": "yes",
   "no": "no",
+  "sort": {
+    "sort_by_stacks": "sort by quantity",
+    "sort_by_name": "sort by name",
+    "round_values": "round stacks up",
+    "exact_value": "exact values"
+  },
+  "add": {
+    "add_capship_hall": "add cap ship hall",
+    "add_factory_hall": "add a full sized factory hall",
+    "add_shipdesigner": "add a full sized ship designer",
+    "add_thruster": "add full thruster"
+  },
   "quantity": "quantity",
   "required_resources": "required resources",
   "modules": "modules",
@@ -16,11 +28,6 @@
   "thrusters": "plasma thrusters",
   "total": "Total",
   "halls": "halls",
-  "add_capship_hall": "add cap ship hall",
-  "add_factory_hall": "add a full sized factory hall",
-  "add_shipdesigner": "add a full sized ship designer",
-  "sort_by_stacks": "sort by name",
-  "add_thruster": "add full thruster",
   "too_many_nozzles": "there are more nozzles than thruster module frames",
   "too_many_supports": "there are more supports than thruster ring modules",
   "too_many_rings": "there are more rings than thruster module frames",
