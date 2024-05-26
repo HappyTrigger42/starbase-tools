@@ -189,8 +189,8 @@ function CapShipResources(
                                 onClick={handleRoundStacks}>
                             {
                                 (round_stacks) ?
-                                    <span>{t('sort.round_values')}</span> :
-                                    <span>{t('sort.exact_value')}</span>
+                                    <span>{t('sort.exact_value')}</span> :
+                                    <span>{t('sort.round_values')}</span>
                             }
                         </Button>
                     </div>
