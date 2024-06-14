@@ -1,6 +1,6 @@
 import React from 'react';
 import {GeneratorChangeableFields, Generator} from './power_types'; // import the types
-import '../../ship/card.css'
+import '../../../card.css'
 import "../../icons.css"
 import {Form, Button, Card, Col, Container, Row, Image} from "react-bootstrap";
 import {useTranslation} from "react-i18next";

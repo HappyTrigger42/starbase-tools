@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "20" : {
+      "version": "0.7.0",
+      "date": "2024/06/14",
+      "changes": "- Ajouté un calculateur pour l'optimisation de l'armure\n- Mis the header à jour pour accommoder le nouveau et les futurs calculateurs"
+    },
     "19" : {
       "version": "0.6.1",
       "date": "2024/05/26",

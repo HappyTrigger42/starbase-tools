@@ -1,0 +1,25 @@
+{
+  "title": "Armor Optimisation",
+  "yes": "yes",
+  "no": "no",
+  "currently_displaying": "Currently displaying {{displayed}} out of {{total}} materials",
+  "chart_options": {
+    "title": "Chart options",
+    "filters": "filters",
+    "options": "options",
+    "chart_height": "chart height",
+    "display_alloys": "display alloys",
+    "display_materials": "display materials",
+    "x_axis": "x axis",
+    "y_axis": "y axis",
+    "min": "min",
+    "max": "max",
+    "reset": "reset all"
+  },
+  "chart_axis": {
+    "armor": "armor",
+    "density": "density",
+    "structural_integrity": "structural integrity",
+    "corrosion_resistance": "corrosion resistance"
+  }
+}

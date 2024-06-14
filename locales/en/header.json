@@ -1,10 +1,23 @@
 {
   "navbar": {
     "home": "home",
-    "ship": "ship calculator",
-    "changelog": "changelog",
-    "capship_price": "capital ship price",
-    "thruster_optimisation": "thruster optimisation",
-    "values": "values"
+    "about": {
+      "title": "about",
+      "changelog": "changelog",
+      "values": "calculator values"
+    },
+    "calculators": {
+      "title": "calculators",
+      "ship_calculator": "ship calculator"
+    },
+    "prices": {
+      "title": "prices",
+      "capship_price": "capital ship price"
+    },
+    "optimisation": {
+      "title": "optimisations",
+      "thruster_optimisation": "thruster optimisation",
+      "armor_optimisation": "armor optimisation"
+    }
   }
 }

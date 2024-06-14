@@ -1,10 +1,23 @@
 {
   "navbar": {
-    "home": "accueil",
-    "ship": "calculs vaisseau",
-    "changelog": "changelog",
-    "capship_price": "coût de capital ship",
-    "thruster_optimisation": "optimisation propultion",
-    "values": "valeurs"
+    "home": "acceuil",
+    "about": {
+      "title": "à propos",
+      "changelog": "changelog",
+      "values": "valeurs des calculateurs"
+    },
+    "calculators": {
+      "title": "calculateurs",
+      "ship_calculator": "calculateur vaisseaux"
+    },
+    "prices": {
+      "title": "prix",
+      "capship_price": "prix cap ship"
+    },
+    "optimisation": {
+      "title": "optimisations",
+      "thruster_optimisation": "optimisation propulseurs",
+      "armor_optimisation": "optimisation armure"
+    }
   }
 }

@@ -1,32 +1,32 @@
 import React from 'react';
 import {ThrusterChangeableFields, Thruster} from './thruster_types';
-import '../../ship/card.css'
+import '../../../card.css'
 import '../../icons.css'
 import './thruster_card.css'
 import {Form, Button, Card, Col, Container, Row, ButtonGroup, Image} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
-import TriangleBaseTier1 from "../../../../assets/img/starbase/Triangle_thruster_body_tier_1.webp"
-import TriangleBaseTier2 from "../../../../assets/img/starbase/Triangle_thruster_body_tier_2.webp"
-import TriangleBaseTier3 from "../../../../assets/img/starbase/Triangle_thruster_body_tier_3.webp"
-import TriangleNozzleTier1 from "../../../../assets/img/starbase/Triangle_thruster_nozzle_tier_1.webp"
-import TriangleNozzleTier2 from "../../../../assets/img/starbase/Triangle_thruster_nozzle_tier_2.webp"
-import TriangleNozzleTier3 from "../../../../assets/img/starbase/Triangle_thruster_nozzle_tier_3.webp"
-import BoxBaseTier1 from "../../../../assets/img/starbase/Box_thruster_body_tier_1.webp"
-import BoxBaseTier2 from "../../../../assets/img/starbase/Box_thruster_body_tier_2.webp"
-import BoxBaseTier3 from "../../../../assets/img/starbase/Box_thruster_body_tier_3.webp"
-import BoxNozzleTier1 from "../../../../assets/img/starbase/Box_thruster_nozzle_tier_1.webp"
-import BoxNozzleTier2 from "../../../../assets/img/starbase/Box_thruster_nozzle_tier_2.webp"
-import BoxNozzleTier3 from "../../../../assets/img/starbase/Box_thruster_nozzle_tier_3.webp"
-import ManeuverTier1 from "../../../../assets/img/starbase/Maneuver_thruster_tier_1.webp"
-import ManeuverTier2 from "../../../../assets/img/starbase/Maneuver_thruster_tier_2.webp"
-import ManeuverTier3 from "../../../../assets/img/starbase/Maneuver_thruster_tier_3.webp"
-import ElectricityConverterTier1 from "../../../../assets/img/starbase/Thruster_electricity_converter_tier_1.webp"
-import ElectricityConverterTier2 from "../../../../assets/img/starbase/Thruster_electricity_converter_tier_2.webp"
-import ElectricityConverterTier3 from "../../../../assets/img/starbase/Thruster_electricity_converter_tier_3.webp"
-import PropellantConverterTier1 from "../../../../assets/img/starbase/Thruster_gas_converter_tier_1.webp"
-import PropellantConverterTier2 from "../../../../assets/img/starbase/Thruster_gas_converter_tier_2.webp"
-import PropellantConverterTier3 from "../../../../assets/img/starbase/Thruster_gas_converter_tier_3.webp"
-import Plasma from "../../../../assets/img/starbase/Starbase_plasma_thruster.webp"
+import TriangleBaseTier1 from "assets/img/starbase/Triangle_thruster_body_tier_1.webp"
+import TriangleBaseTier2 from "assets/img/starbase/Triangle_thruster_body_tier_2.webp"
+import TriangleBaseTier3 from "assets/img/starbase/Triangle_thruster_body_tier_3.webp"
+import TriangleNozzleTier1 from "assets/img/starbase/Triangle_thruster_nozzle_tier_1.webp"
+import TriangleNozzleTier2 from "assets/img/starbase/Triangle_thruster_nozzle_tier_2.webp"
+import TriangleNozzleTier3 from "assets/img/starbase/Triangle_thruster_nozzle_tier_3.webp"
+import BoxBaseTier1 from "assets/img/starbase/Box_thruster_body_tier_1.webp"
+import BoxBaseTier2 from "assets/img/starbase/Box_thruster_body_tier_2.webp"
+import BoxBaseTier3 from "assets/img/starbase/Box_thruster_body_tier_3.webp"
+import BoxNozzleTier1 from "assets/img/starbase/Box_thruster_nozzle_tier_1.webp"
+import BoxNozzleTier2 from "assets/img/starbase/Box_thruster_nozzle_tier_2.webp"
+import BoxNozzleTier3 from "assets/img/starbase/Box_thruster_nozzle_tier_3.webp"
+import ManeuverTier1 from "assets/img/starbase/Maneuver_thruster_tier_1.webp"
+import ManeuverTier2 from "assets/img/starbase/Maneuver_thruster_tier_2.webp"
+import ManeuverTier3 from "assets/img/starbase/Maneuver_thruster_tier_3.webp"
+import ElectricityConverterTier1 from "assets/img/starbase/Thruster_electricity_converter_tier_1.webp"
+import ElectricityConverterTier2 from "assets/img/starbase/Thruster_electricity_converter_tier_2.webp"
+import ElectricityConverterTier3 from "assets/img/starbase/Thruster_electricity_converter_tier_3.webp"
+import PropellantConverterTier1 from "assets/img/starbase/Thruster_gas_converter_tier_1.webp"
+import PropellantConverterTier2 from "assets/img/starbase/Thruster_gas_converter_tier_2.webp"
+import PropellantConverterTier3 from "assets/img/starbase/Thruster_gas_converter_tier_3.webp"
+import Plasma from "assets/img/starbase/Starbase_plasma_thruster.webp"
 
 interface ThrusterCardProps {
     index: number;

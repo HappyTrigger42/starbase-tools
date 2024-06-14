@@ -1,0 +1,25 @@
+{
+  "title": "Optimisation de l'Armure",
+  "yes": "oui",
+  "no": "non",
+  "currently_displaying": "Affichage de {{displayed}} sur {{total}} matériaux",
+  "chart_options": {
+    "title": "Options du graphe",
+    "filters": "filtres",
+    "options": "options",
+    "chart_height": "hauteur du graphe",
+    "display_alloys": "afficher les alliages",
+    "display_materials": "afficher les matériaux",
+    "x_axis": "axe des x",
+    "y_axis": "axe des y",
+    "min": "min",
+    "max": "max",
+    "reset": "réinitialiser tout"
+  },
+  "chart_axis": {
+    "armor": "armure",
+    "density": "densité",
+    "structural_integrity": "intégrité structurelle",
+    "corrosion_resistance": "résistance à la corrosion"
+  }
+}

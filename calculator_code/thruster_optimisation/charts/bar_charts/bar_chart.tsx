@@ -79,7 +79,6 @@ function BarChart (
         return <Row className={"thruster-optimisation-chart"}>
             <ReactApexChart options={options_chart} series={[values]} type={"bar"} height={chart_height * 6 + extendedHeight}/>
         </Row>
-
     }
 
     return <Card className={"thruster-optimisation-chart"}>
