@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "22" : {
+      "version": "0.7.2",
+      "date": "2024/06/15",
+      "changes": "Corrected issues with the dark mode making the charts difficult to read"
+    },
     "21" : {
       "version": "0.7.1",
       "date": "2024/06/15",

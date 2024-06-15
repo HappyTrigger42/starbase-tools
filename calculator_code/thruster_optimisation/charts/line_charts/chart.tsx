@@ -6,6 +6,7 @@ import {Chart_data_interface} from "./chart_data_interface";
 import {Card, Container, Form, Row} from "react-bootstrap";
 import React, {ChangeEvent, useEffect, useState} from "react";
 import {prettyNumber} from "../../../../../utilities/pretty_number";
+import {useTheme} from "../../../../theme/theme_context";
 
 function Chart (
     {
@@ -25,6 +26,7 @@ function Chart (
     }) {
 
     const { t } = useTranslation('thruster_optimisation');
+    const { theme } = useTheme();
 
     const [Display, setDisplay] = useState(true)
     const [extendedHeight, setExtendedHeight] = useState<number>(0)
@@ -58,19 +60,34 @@ function Chart (
         },
         xaxis: {
             title: {
-                text: x_label
+                text: x_label,
+                style: {
+                    color: theme === "dark" ? "#ffffff" : "#000000"
+                }
             },
             labels: {
-                formatter: prettyNumber
+                formatter: prettyNumber,
+                style: {
+                    colors: theme === "dark" ? "#ffffff" : "#000000"
+                }
             }
         },
         yaxis: {
             title: {
-                text: t("chart.thrust")
+                text: t("chart.thrust"),
+                style: {
+                    color: theme === "dark" ? "#ffffff" : "#000000"
+                }
             },
             labels: {
-                formatter: prettyNumber
+                formatter: prettyNumber,
+                style: {
+                    colors: theme === "dark" ? "#ffffff" : "#000000"
+                }
             }
+        },
+        tooltip: {
+            theme: theme,
         }
     }
 

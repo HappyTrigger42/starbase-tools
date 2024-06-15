@@ -8,6 +8,7 @@ import {prettyNumber} from "../../../utilities/pretty_number";
 import {armor_sort_type} from "./const_values";
 import {useLocalStorage} from "../../../utilities/local_storage";
 import {useTranslation} from "react-i18next";
+import {useTheme} from "../../theme/theme_context";
 
 
 function ArmorChart(
@@ -42,6 +43,7 @@ function ArmorChart(
     }) {
 
     const {t} = useTranslation('armor_optimisation');
+    const { theme } = useTheme();
 
     function getMaterials() {
         let ret = [];
@@ -119,19 +121,34 @@ function ArmorChart(
             },
             xaxis: {
                 title: {
-                    text: t("chart_axis.density")
+                    text: t("chart_axis.density"),
+                    style: {
+                        color: theme === "dark" ? "#ffffff" : "#000000"
+                    }
                 },
                 labels: {
-                    formatter: prettyNumber
+                    formatter: prettyNumber,
+                    style: {
+                        colors: theme === "dark" ? "#ffffff" : "#000000"
+                    }
                 }
             },
             yaxis: {
                 title: {
-                    text: t("chart_axis.armor")
+                    text: t("chart_axis.armor"),
+                    style: {
+                        color: theme === "dark" ? "#ffffff" : "#000000"
+                    }
                 },
                 labels: {
-                    formatter: prettyNumber
+                    formatter: prettyNumber,
+                    style: {
+                        colors: theme === "dark" ? "#ffffff" : "#000000"
+                    }
                 }
+            },
+            tooltip: {
+                theme: theme,
             },
             fill: {
                 type: 'image',
@@ -143,6 +160,9 @@ function ArmorChart(
                 }
             },
             legend: {
+                labels: {
+                    colors: theme === "dark" ? "#ffffff" : "#000000"
+                }
             }
         }
     }
@@ -175,7 +195,7 @@ function ArmorChart(
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [x_axis, y_axis, displayMaterials, displayAlloys, minArmor, maxArmor, minDensity, maxDensity,
-        minStructuralIntegrity, maxStructuralIntegrity, minCorrosionResistance, maxCorrosionResistance]);
+        minStructuralIntegrity, maxStructuralIntegrity, minCorrosionResistance, maxCorrosionResistance, theme]);
 
     return <Row className={"armor-optimisation-chart"}>
         <div className={"armor-optimisation-display-center"}>

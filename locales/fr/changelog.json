@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "22" : {
+      "version": "0.7.2",
+      "date": "2024/06/15",
+      "changes": "Corrigé un soucis qui rendait les graphes difficiles à lire en mode sombre"
+    },
     "21" : {
       "version": "0.7.1",
       "date": "2024/06/15",

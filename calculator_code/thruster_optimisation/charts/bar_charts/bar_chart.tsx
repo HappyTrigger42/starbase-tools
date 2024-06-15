@@ -7,6 +7,7 @@ import {ApexOptions} from "apexcharts";
 import {chart_raw_thruster_values} from "../chart_raw_thruster_values_interface";
 import {get_bar_chart_values} from "./bar_chart_calculator";
 import {prettyNumber} from "../../../../../utilities/pretty_number";
+import {useTheme} from "../../../../theme/theme_context";
 
 
 function BarChart (
@@ -21,6 +22,7 @@ function BarChart (
     }) {
 
     const { t } = useTranslation('thruster_optimisation');
+    const { theme } = useTheme();
 
     const [Display, setDisplay] = useState(true)
     const [bar_chart_voxel_values, set_bar_chart_voxel_values] = useState<bar_chart_data_interface>({data: []})
@@ -67,13 +69,34 @@ function BarChart (
             },
             xaxis: {
                 title: {
-                    text: translated_name
+                    text: translated_name,
+                    style: {
+                        color: theme === "dark" ? "#ffffff" : "#000000"
+                    }
                 },
                 categories: raw_values.map((value) => value.name),
                 labels: {
-                    formatter: prettyNumber
+                    formatter: prettyNumber,
+                    style: {
+                        colors: theme === "dark" ? "#ffffff" : "#000000"
+                    }
                 }
             },
+            yaxis: {
+                title: {
+                    style: {
+                        color: theme === "dark" ? "#ffffff" : "#000000"
+                    }
+                },
+                labels: {
+                    style: {
+                        colors: theme === "dark" ? "#ffffff" : "#000000"
+                    }
+                }
+            },
+            tooltip: {
+                theme: theme,
+            }
         }
 
         return <Row className={"thruster-optimisation-chart"}>

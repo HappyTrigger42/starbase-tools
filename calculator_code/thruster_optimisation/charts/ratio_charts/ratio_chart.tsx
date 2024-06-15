@@ -9,6 +9,7 @@ import {prettyNumber} from "../../../../../utilities/pretty_number";
 import {chart_raw_thruster_values} from "../chart_raw_thruster_values_interface";
 import {ratio_ratios_chart_data_interface} from "./ratio_chart_data_interface";
 import {get_ratio_chart_ratios} from "./ratio_chart_calculator";
+import {useTheme} from "../../../../theme/theme_context";
 
 function RatioChart (
     {
@@ -22,6 +23,7 @@ function RatioChart (
     }) {
 
     const { t } = useTranslation('thruster_optimisation');
+    const { theme } = useTheme();
 
     const [Display, setDisplay] = useState(true)
     const [series, setSeries] = useState<ratio_ratios_chart_data_interface[]>([])
@@ -84,33 +86,63 @@ function RatioChart (
         }
     }, [compactCharts]);
 
-    const options_ratios: ApexOptions = {
-        chart: {
-            type: 'bar',
-        },
-        plotOptions: {
-            bar: {
-                horizontal: false,
-                columnWidth: '65%',
+    function getOptions(): ApexOptions {
+        return {
+            chart: {
+                type: 'bar',
             },
-        },
-        dataLabels: {
-            enabled: false
-        },
-        markers: {
-            hover: {
-                sizeOffset: 4
-            }
-        },
-        xaxis: {
-            categories: ratios_labels,
-        },
-        yaxis: {
-            labels: {
-                formatter: prettyNumber
-            }
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '65%',
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            markers: {
+                hover: {
+                    sizeOffset: 4
+                }
+            },
+            xaxis: {
+                categories: ratios_labels,
+                title: {
+                    style: {
+                        color: theme === "dark" ? "#ffffff" : "#000000"
+                    }
+                },
+                labels: {
+                    style: {
+                        colors: ratios_labels.map(() => theme === "dark" ? "#ffffff" : "#000000")
+                    }
+                }
+            },
+            yaxis: {
+                title: {
+                    style: {
+                        color: theme === "dark" ? "#ffffff" : "#000000"
+                    }
+                },
+                labels: {
+                    formatter: prettyNumber,
+                    style: {
+                        colors: theme === "dark" ? "#ffffff" : "#000000"
+                    }
+                }
+            },
+            tooltip: {
+                theme: theme,
+            },
         }
     }
+
+    const [options, setOptions] = useState<ApexOptions>(getOptions())
+
+    useEffect(() => {
+        setOptions(getOptions())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [theme, ratios_labels]);
 
     return <Card className={"thruster-optimisation-chart"}>
         <Card.Header className={"stats-card-header"}>
@@ -129,7 +161,7 @@ function RatioChart (
                     <Container className={"thruster-optimisation-chart"}>
                         <Row className={"thruster-optimisation-chart"}>
                             <Col xl={12}>
-                                <ReactApexChart options={options_ratios} series={series} type={"bar"} height={chart_height * 20 + extendedHeight}/>
+                                <ReactApexChart options={options} series={series} type={"bar"} height={chart_height * 20 + extendedHeight}/>
                             </Col>
                         </Row>
                         <Row>
