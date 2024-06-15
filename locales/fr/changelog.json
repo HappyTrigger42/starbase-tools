@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "23" : {
+      "version": "0.7.3",
+      "date": "2024/06/16",
+      "changes": "Corrigé un bug sur le calculateur d'optimisation des propulseurs qui pouvait crash le site web"
+    },
     "22" : {
       "version": "0.7.2",
       "date": "2024/06/15",
