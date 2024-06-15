@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "21" : {
+      "version": "0.7.1",
+      "date": "2024/06/15",
+      "changes": "- Ajouté les tableaux de valeurs des materiaux sur la page de l'optimsation de l'armure\n- Rendu toutes les tables triables"
+    },
     "20" : {
       "version": "0.7.0",
       "date": "2024/06/14",

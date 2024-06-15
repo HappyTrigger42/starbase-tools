@@ -7,7 +7,17 @@
   "mass": "mass kg",
   "presentation": "This page presents all the values that are used by the rest of the website\nShould a value not be present, it is because it is not used by the calculators\nIt is planned to add more values to make the calculators more precise and useful. Discussing what should be done first is possible\nShould a value be incorrect, please do say so in my discord server, preferably with screenshots or, even better, a fe file containing a test ship showcasing the issue",
   "join_discord": "Discord server",
+  "table_description": "The tables are sortable by clicking on the column titles",
   "component": "component",
+  "armor": {
+    "material_values": "material values",
+    "alloy_values": "alloy values",
+    "name": "name",
+    "armor": "armor",
+    "density": "density",
+    "structural_durability": "structural durability",
+    "corrosion_resistance": "corrosion resistance"
+  },
   "generators": {
     "generators": "generators",
     "enhancers": "enhancers",

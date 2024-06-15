@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "21" : {
+      "version": "0.7.1",
+      "date": "2024/06/15",
+      "changes": "- Added value tables to the armor optisation page\n- Made all value tables interactible and sortable"
+    },
     "20" : {
       "version": "0.7.0",
       "date": "2024/06/14",

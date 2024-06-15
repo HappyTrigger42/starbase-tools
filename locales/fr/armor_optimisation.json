@@ -3,6 +3,7 @@
   "yes": "oui",
   "no": "non",
   "currently_displaying": "Affichage de {{displayed}} sur {{total}} matériaux",
+  "table_description": "Astuce : les tableaux suivants peuvent être triés en clickant sur les en-têtes de colonnes",
   "chart_options": {
     "title": "Options du graphe",
     "filters": "filtres",
@@ -19,7 +20,7 @@
   "chart_axis": {
     "armor": "armure",
     "density": "densité",
-    "structural_integrity": "intégrité structurelle",
+    "structural_durability": "durabilité structurelle",
     "corrosion_resistance": "résistance à la corrosion"
   }
 }

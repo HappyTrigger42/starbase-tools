@@ -3,6 +3,7 @@
   "yes": "yes",
   "no": "no",
   "currently_displaying": "Currently displaying {{displayed}} out of {{total}} materials",
+  "table_description": "Hint : The following tables are sortable by clicking on the column titles",
   "chart_options": {
     "title": "Chart options",
     "filters": "filters",
@@ -19,7 +20,7 @@
   "chart_axis": {
     "armor": "armor",
     "density": "density",
-    "structural_integrity": "structural integrity",
+    "structural_durability": "structural durability",
     "corrosion_resistance": "corrosion resistance"
   }
 }

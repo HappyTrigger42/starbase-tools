@@ -7,7 +7,17 @@
   "mass": "masse kg",
   "presentation": "Cette page présente toutes les valeurs utilisées par le reste du site Web\nSi une valeur n'est pas présente, c'est parce qu'elle n'est pas utilisée par les calculateurs\nIl est prévu d'ajouter plus de valeurs pour rendre les calculateurs plus précis et utiles. Discuter de ce qui devrait être fait en premier est possible\nSi une valeur est incorrecte, veuillez le signaler sur mon serveur discord, de préférence avec des captures d'écran ou, encore mieux, un fichier fe contenant un navire test illustrant le problème",
   "join_discord": "Serveur Discord",
+  "table_description": "Les tableaux peuvent être triés en clickant sur les en-têtes de colonnes",
   "component": "composant",
+  "armor": {
+    "material_values": "valueurs des matériaux",
+    "alloy_values": "valeurs des alliages",
+    "name": "nom",
+    "armor": "armure",
+    "density": "densité",
+    "structural_durability": "durabilité structurelle",
+    "corrosion_resistance": "resistance à la corrosion"
+  },
   "generators": {
     "generators": "générateurs",
     "enhancers": "amplificateurs",

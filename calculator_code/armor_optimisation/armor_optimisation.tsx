@@ -1,5 +1,5 @@
 import './armor_optimisation.css'
-import {Container, Row} from 'react-bootstrap';
+import {Col, Container, Row} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import ArmorChart from "./armor_chart";
 import ChartOptions from "./chart_options";
@@ -7,10 +7,13 @@ import {useLocalStorage} from "../../../utilities/local_storage";
 import {
     chart_height_default,
     highest_armor_value, highest_corrosion_resistance_value,
-    highest_density_value, highest_structural_integrity_value,
+    highest_density_value, highest_structural_durability_value,
     lowest_armor_value, lowest_corrosion_resistance_value,
-    lowest_density_value, lowest_structural_integrity_value
+    lowest_density_value, lowest_structural_durability_value
 } from "./const_values";
+import ArmorValueTable from "../../values/value_tables/calculator_tables/armor_value_table";
+import AlloyValueTable from "../../values/value_tables/calculator_tables/alloy_values";
+import React from "react";
 
 
 function ArmorOptimisation() {
@@ -25,8 +28,8 @@ function ArmorOptimisation() {
     const [maxArmor, setMaxArmor] = useLocalStorage("armor_optimisation_max_armor", highest_armor_value);
     const [minDensity, setMinDensity] = useLocalStorage("armor_optimisation_min_density", lowest_density_value);
     const [maxDensity, setMaxDensity] = useLocalStorage("armor_optimisation_max_density", highest_density_value);
-    const [minStructuralIntegrity, setMinStructuralIntegrity] = useLocalStorage("armor_optimisation_min_structural_integrity", lowest_structural_integrity_value);
-    const [maxStructuralIntegrity, setMaxStructuralIntegrity] = useLocalStorage("armor_optimisation_max_structural_integrity", highest_structural_integrity_value);
+    const [minStructuralDurability, setMinStructuralIntegrity] = useLocalStorage("armor_optimisation_min_structural_durability", lowest_structural_durability_value);
+    const [maxStructuralDurability, setMaxStructuralIntegrity] = useLocalStorage("armor_optimisation_max_structural_durability", highest_structural_durability_value);
     const [minCorrosionResistance, setMinCorrosionResistance] = useLocalStorage("armor_optimisation_min_corrosion_resistance", lowest_corrosion_resistance_value);
     const [maxCorrosionResistance, setMaxCorrosionResistance] = useLocalStorage("armor_optimisation_max_corrosion_resistance", highest_corrosion_resistance_value);
 
@@ -56,10 +59,10 @@ function ArmorOptimisation() {
                         setMinDensity={setMinDensity}
                         maxDensity={maxDensity}
                         setMaxDensity={setMaxDensity}
-                        minStructuralIntegrity={minStructuralIntegrity}
-                        setMinStructuralIntegrity={setMinStructuralIntegrity}
-                        maxStructuralIntegrity={maxStructuralIntegrity}
-                        setMaxStructuralIntegrity={setMaxStructuralIntegrity}
+                        minStructuralDurability={minStructuralDurability}
+                        setMinStructuralDurability={setMinStructuralIntegrity}
+                        maxStructuralDurability={maxStructuralDurability}
+                        setMaxStructuralDurability={setMaxStructuralIntegrity}
                         minCorrosionResistance={minCorrosionResistance}
                         setMinCorrosionResistance={setMinCorrosionResistance}
                         maxCorrosionResistance={maxCorrosionResistance}
@@ -77,11 +80,24 @@ function ArmorOptimisation() {
                         maxArmor={maxArmor}
                         minDensity={minDensity}
                         maxDensity={maxDensity}
-                        minStructuralIntegrity={minStructuralIntegrity}
-                        maxStructuralIntegrity={maxStructuralIntegrity}
+                        minStructuralIntegrity={minStructuralDurability}
+                        maxStructuralIntegrity={maxStructuralDurability}
                         minCorrosionResistance={minCorrosionResistance}
                         maxCorrosionResistance={maxCorrosionResistance}
                     />
+                </Row>
+                <Row>
+                    <div className={"armor-optimisation-text-align-center"}>
+                        {t('table_description')}
+                    </div>
+                </Row>
+                <Row className={"armor-optimisation-margin"}>
+                    <Col lg={6}>
+                        <ArmorValueTable/>
+                    </Col>
+                    <Col lg={6}>
+                        <AlloyValueTable/>
+                    </Col>
                 </Row>
             </Container>
         </div>

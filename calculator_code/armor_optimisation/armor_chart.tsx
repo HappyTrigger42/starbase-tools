@@ -66,7 +66,7 @@ function ArmorChart(
                     case "density":
                         data_x = material.density;
                         break;
-                    case "structural_integrity":
+                    case "structural_durability":
                         data_x = material.structural_durability;
                         break;
                     case "corrosion_resistance":
@@ -81,7 +81,7 @@ function ArmorChart(
                     case "density":
                         data_y = material.density;
                         break;
-                    case "structural_integrity":
+                    case "structural_durability":
                         data_y = material.structural_durability;
                         break;
                     case "corrosion_resistance":

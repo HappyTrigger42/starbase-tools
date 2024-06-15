@@ -296,13 +296,13 @@ export const materials = [
 ]
 
 export const alloys = [
-    glass,
-    bastonium,
-    exutium,
-    corium,
-    tallium,
-    baltiumAlloy,
     alium,
+    baltiumAlloy,
+    bastonium,
+    corium,
+    exutium,
+    glass,
+    tallium,
 ]
 
 export const all_materials = [...materials, ...alloys].sort((a, b) => a.name.localeCompare(b.name))

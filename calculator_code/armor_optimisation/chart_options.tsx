@@ -10,11 +10,11 @@ import {
     highest_armor_value,
     highest_corrosion_resistance_value,
     highest_density_value,
-    highest_structural_integrity_value,
+    highest_structural_durability_value,
     lowest_armor_value,
     lowest_corrosion_resistance_value,
     lowest_density_value,
-    lowest_structural_integrity_value
+    lowest_structural_durability_value
 } from "./const_values";
 import {num_input} from "../../../utilities/num_input";
 import {on_off} from "../../../utilities/on_off";
@@ -40,10 +40,10 @@ function ChartOptions(
         setMinDensity,
         maxDensity,
         setMaxDensity,
-        minStructuralIntegrity,
-        setMinStructuralIntegrity,
-        maxStructuralIntegrity,
-        setMaxStructuralIntegrity,
+        minStructuralDurability,
+        setMinStructuralDurability,
+        maxStructuralDurability,
+        setMaxStructuralDurability,
         minCorrosionResistance,
         setMinCorrosionResistance,
         maxCorrosionResistance,
@@ -67,10 +67,10 @@ function ChartOptions(
         setMinDensity: React.Dispatch<React.SetStateAction<number>>
         maxDensity: number,
         setMaxDensity: React.Dispatch<React.SetStateAction<number>>
-        minStructuralIntegrity: number,
-        setMinStructuralIntegrity: React.Dispatch<React.SetStateAction<number>>
-        maxStructuralIntegrity: number,
-        setMaxStructuralIntegrity: React.Dispatch<React.SetStateAction<number>>
+        minStructuralDurability: number,
+        setMinStructuralDurability: React.Dispatch<React.SetStateAction<number>>
+        maxStructuralDurability: number,
+        setMaxStructuralDurability: React.Dispatch<React.SetStateAction<number>>
         minCorrosionResistance: number,
         setMinCorrosionResistance: React.Dispatch<React.SetStateAction<number>>
         maxCorrosionResistance: number,
@@ -100,7 +100,7 @@ function ChartOptions(
                              onChange={e => handle_axis_change('chart_options.x_axis', e, setAxis)}>
                     <option value={"armor"}>{t('chart_axis.armor')}</option>
                     <option value={"density"}>{t('chart_axis.density')}</option>
-                    <option value={"structural_integrity"}>{t('chart_axis.structural_integrity')}</option>
+                    <option value={"structural_durability"}>{t('chart_axis.structural_durability')}</option>
                     <option value={"corrosion_resistance"}>{t('chart_axis.corrosion_resistance')}</option>
                 </Form.Select>
             </Col>
@@ -139,8 +139,8 @@ function ChartOptions(
         setMaxArmor(highest_armor_value);
         setMinDensity(lowest_density_value);
         setMaxDensity(highest_density_value);
-        setMinStructuralIntegrity(lowest_structural_integrity_value);
-        setMaxStructuralIntegrity(highest_structural_integrity_value);
+        setMinStructuralDurability(lowest_structural_durability_value);
+        setMaxStructuralDurability(highest_structural_durability_value);
         setMinCorrosionResistance(lowest_corrosion_resistance_value);
         setMaxCorrosionResistance(highest_corrosion_resistance_value);
     }
@@ -177,7 +177,7 @@ function ChartOptions(
                         <h3>{t("chart_options.filters")}</h3>
                         {min_max(t("chart_axis.armor"), lowest_armor_value, highest_armor_value, minArmor, setMinArmor, maxArmor, setMaxArmor)}
                         {min_max(t("chart_axis.density"), lowest_density_value, highest_density_value, minDensity, setMinDensity, maxDensity, setMaxDensity)}
-                        {min_max(t("chart_axis.structural_integrity"), lowest_structural_integrity_value, highest_structural_integrity_value, minStructuralIntegrity, setMinStructuralIntegrity, maxStructuralIntegrity, setMaxStructuralIntegrity)}
+                        {min_max(t("chart_axis.structural_durability"), lowest_structural_durability_value, highest_structural_durability_value, minStructuralDurability, setMinStructuralDurability, maxStructuralDurability, setMaxStructuralDurability)}
                         {min_max(t("chart_axis.corrosion_resistance"), lowest_corrosion_resistance_value, highest_corrosion_resistance_value, minCorrosionResistance, setMinCorrosionResistance, maxCorrosionResistance, setMaxCorrosionResistance)}
                     </Col>
                 </Row>
