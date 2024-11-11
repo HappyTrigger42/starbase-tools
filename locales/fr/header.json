@@ -18,6 +18,9 @@
       "title": "optimisations",
       "thruster_optimisation": "optimisation propulseurs",
       "armor_optimisation": "optimisation armure"
+    },
+    "market": {
+      "title": "marché"
     }
   }
 }

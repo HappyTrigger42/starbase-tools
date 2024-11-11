@@ -4,6 +4,7 @@ import React from 'react';
 import {clamp} from "../../../../utilities/clamp";
 import {useTranslation} from "react-i18next";
 import {collector_elec_per_sec} from "../../values/tools_constants";
+import {ship_calc_max_collectors, ship_calc_max_mining_lasers, ship_calc_max_towing_weight} from "../const_values";
 
 
 function Machinery(
@@ -30,13 +31,13 @@ function Machinery(
     const { t } = useTranslation('ship_calc');
 
     const collectorCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const count = clamp(Number(e.target.value), 0, 100);
+        const count = clamp(Number(e.target.value), 0, ship_calc_max_collectors);
         e.target.value = count.toString()
         setCollectorCount(count);
     }
 
     const miningLaserCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const count = clamp(Number(e.target.value), 0, 30);
+        const count = clamp(Number(e.target.value), 0, ship_calc_max_mining_lasers);
         e.target.value = count.toString()
         setMiningLaserCount(count);
     }
@@ -48,7 +49,7 @@ function Machinery(
     }
 
     const towingWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const count = clamp(Number(e.target.value), 0, 120000);
+        const count = clamp(Number(e.target.value), 0, ship_calc_max_towing_weight);
         e.target.value = count.toString()
         setTowingWeight(count);
     }

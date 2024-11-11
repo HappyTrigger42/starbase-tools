@@ -2,6 +2,7 @@
   "title": "Issues",
   "no-issues": "currently there are no issues reported",
   "issues": {
-    "1": "the heat dissipation on the ship calculator is not accurate enough"
+    "1": "the heat dissipation on the ship calculator is not accurate enough",
+    "2": "the market tab is not complete and not pleasant to navigate / can also be unstable"
   }
 }

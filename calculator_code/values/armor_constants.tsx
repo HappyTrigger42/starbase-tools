@@ -10,7 +10,7 @@ export interface material {
 }
 
 export const aegisium: material = {
-    name: "aegisium",
+    name: "Aegisium",
     armor: 1.75,
     structural_durability: 60,
     density: 9.67,
@@ -217,7 +217,7 @@ export const glass: material = {
 }
 
 export const baltiumAlloy: material = {
-    name: "Baltium Alloy",
+    name: "Baltium",
     armor: 1.3,
     structural_durability: 90,
     density: 10.22,
@@ -226,7 +226,7 @@ export const baltiumAlloy: material = {
 }
 
 export const alium: material = {
-    name: "Alium Alloy",
+    name: "Alium",
     armor: 1.9,
     structural_durability: 60,
     density: 8.46,
@@ -235,7 +235,7 @@ export const alium: material = {
 }
 
 export const bastonium: material = {
-    name: "Bastonium Alloy",
+    name: "Bastonium",
     armor: 2.2,
     structural_durability: 55,
     density: 8.69,
@@ -244,7 +244,7 @@ export const bastonium: material = {
 }
 
 export const exutium: material = {
-    name: "Exutium Alloy",
+    name: "Exutium",
     armor: 4.4,
     structural_durability: 60,
     density: 17.50,
@@ -268,6 +268,33 @@ export const tallium: material = {
     density: 12.5,
     corrosion_resistance: 400,
     source_asset: material_base_path + "tallium.png",
+}
+
+export const ice: material = {
+    name: "Ice",
+    armor: 0,
+    structural_durability: 0,
+    density: 0,
+    corrosion_resistance: 0,
+    source_asset: material_base_path + "ice.png",
+}
+
+export const karnite: material = {
+    name: "Karnite",
+    armor: 0,
+    structural_durability: 0,
+    density: 0,
+    corrosion_resistance: 0,
+    source_asset: material_base_path + "karnite.png",
+}
+
+export const surtrite: material = {
+    name: "Surtrite",
+    armor: 0,
+    structural_durability: 0,
+    density: 0,
+    corrosion_resistance: 0,
+    source_asset: material_base_path + "surtrite.png",
 }
 
 export const materials = [
@@ -305,4 +332,11 @@ export const alloys = [
     tallium,
 ]
 
-export const all_materials = [...materials, ...alloys].sort((a, b) => a.name.localeCompare(b.name))
+export const resources = [
+    ice,
+    karnite,
+    surtrite,
+]
+
+export const all_amour_materials = [...materials, ...alloys].sort((a, b) => a.name.localeCompare(b.name))
+export const all_resources = [...materials, ...alloys, ...resources].sort((a, b) => a.name.localeCompare(b.name))

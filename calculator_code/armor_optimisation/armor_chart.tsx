@@ -2,7 +2,7 @@ import {ApexOptions} from "apexcharts";
 import {Row} from "react-bootstrap";
 import ReactApexChart from "react-apexcharts";
 import React, {useEffect} from "react";
-import {all_materials, alloys, material, materials} from "../values/armor_constants";
+import {all_amour_materials, alloys, material, materials} from "../values/armor_constants";
 import "./armor_optimisation.css";
 import {prettyNumber} from "../../../utilities/pretty_number";
 import {armor_sort_type} from "./const_values";
@@ -49,7 +49,7 @@ function ArmorChart(
         let ret = [];
         let selected_materials: material[] = [];
         if (displayMaterials && displayAlloys) {
-            selected_materials = all_materials
+            selected_materials = all_amour_materials
         } else if (displayMaterials && !displayAlloys) {
             selected_materials = materials
         } else if (!displayMaterials && displayAlloys) {
@@ -154,7 +154,7 @@ function ArmorChart(
                 type: 'image',
                 opacity: 1,
                 image: {
-                    src: all_materials.map((material) => material.source_asset),
+                    src: all_amour_materials.map((material) => material.source_asset),
                     width: 40,
                     height: 40
                 }
@@ -199,7 +199,7 @@ function ArmorChart(
 
     return <Row className={"armor-optimisation-chart"}>
         <div className={"armor-optimisation-display-center"}>
-            {t("currently_displaying", {"displayed": series_chart.length, "total": all_materials.length})}
+            {t("currently_displaying", {"displayed": series_chart.length, "total": all_amour_materials.length})}
         </div>
         <ReactApexChart options={options_chart} series={series_chart} type={"scatter"} height={chartHeight * 10}/>
     </Row>

@@ -3,6 +3,16 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "25" : {
+      "version": "1.0.0",
+      "date": "2024/11/11",
+      "changes": "Ajouté l'onglet marché pour afficher les prix à Origin. C'est un prototype très précoce et des instabilités sont à prévoir"
+    },
+    "24" : {
+      "version": "0.7.4",
+      "date": "2024/08/26",
+      "changes": "Mit la valeur maximale du towing de 120'000 tonnes à 1'000'000 tonnes"
+    },
     "23" : {
       "version": "0.7.3",
       "date": "2024/06/16",
