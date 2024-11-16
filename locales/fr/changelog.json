@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "26" : {
+      "version": "1.0.1",
+      "date": "2024/11/16",
+      "changes": "Ajouté le français manquant à la page marché"
+    },
     "25" : {
       "version": "1.0.0",
       "date": "2024/11/11",

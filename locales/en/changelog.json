@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "26" : {
+      "version": "1.0.1",
+      "date": "2024/11/16",
+      "changes": "Added the missing french translation to the market page"
+    },
     "25" : {
       "version": "1.0.0",
       "date": "2024/11/11",

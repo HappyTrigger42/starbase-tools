@@ -1,3 +1,34 @@
 {
-
+  "main": {
+    "title": "Market",
+    "help": "Click on a resource to see more details.",
+    "headers": {
+      "icon": "Icon",
+      "name": "Name",
+      "price": "Price",
+      "quantity": "Quantity",
+      "last_updated": "Last Updated ( local time )"
+    }
+  },
+  "menu": {
+    "settings": "Settings",
+    "candlestick_change": "This will change the amount of time for one candlestick in the chart.",
+    "candlestick_amount": "This will change the amount of candlesticks in the chart.",
+    "current_values": "Current Values",
+    "timeframe": {
+      "15_min": "15 minutes",
+      "30_min": "30 minutes",
+      "1_hour": "1 hour",
+      "4_hour": "4 hours",
+      "1_day": "1 day"
+    }
+  },
+  "resource": {
+    "available": "Available",
+    "r_at_m": "{{resource}} at {{market}}"
+  },
+  "errors": {
+    "resource_not_found": "Error: resource {{resource}} not found.",
+    "market_not_found": "Error: market {{market}} not found."
+  }
 }
