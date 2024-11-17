@@ -288,6 +288,15 @@ export const karnite: material = {
     source_asset: material_base_path + "karnite.png",
 }
 
+export const nhurgite: material = {
+    name: "Nhurgite",
+    armor: 0,
+    structural_durability: 0,
+    density: 0,
+    corrosion_resistance: 0,
+    source_asset: material_base_path + "nhurgite.png",
+}
+
 export const surtrite: material = {
     name: "Surtrite",
     armor: 0,
@@ -335,6 +344,7 @@ export const alloys = [
 export const resources = [
     ice,
     karnite,
+    nhurgite,
     surtrite,
 ]
 
