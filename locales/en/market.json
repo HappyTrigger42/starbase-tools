@@ -7,7 +7,7 @@
       "name": "Name",
       "price": "Price",
       "quantity": "Quantity",
-      "last_updated": "Last Updated ( local time )"
+      "availability": "Availability"
     }
   },
   "menu": {
@@ -25,6 +25,8 @@
   },
   "resource": {
     "available": "Available",
+    "not_available": "Not available",
+    "last_available": "Last available {{time}}",
     "r_at_m": "{{resource}} at {{market}}"
   },
   "errors": {

@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "28" : {
+      "version": "1.0.3",
+      "date": "2024/11/21",
+      "changes": "Added missing locales on the market page"
+    },
     "27" : {
       "version": "1.0.2",
       "date": "2024/11/17",
