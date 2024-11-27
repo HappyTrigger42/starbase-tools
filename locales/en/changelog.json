@@ -3,6 +3,11 @@
   "issues": "known issues",
   "todo": "todo list",
   "versions": {
+    "29" : {
+      "version": "1.0.4",
+      "date": "2024/11/27",
+      "changes": "- Changed the display of the time for the market pages. It should be more readable with timezones now.\n- Made the graphs easier to read for the resources.\n- Changed the default display of the market resources to be 4 hours"
+    },
     "28" : {
       "version": "1.0.3",
       "date": "2024/11/21",

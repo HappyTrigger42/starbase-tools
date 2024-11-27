@@ -3,6 +3,11 @@
   "issues": "problèmes connus",
   "todo": "choses à faire",
   "versions": {
+    "29" : {
+      "version": "1.0.4",
+      "date": "2024/11/27",
+      "changes": "- Changé l'affichage de l'heure sur les pages marché. Cela devrait être plus lisible avec les fuseaux horaires maintenant.\n- rendu les graphs plus faciles à lire pour les resources\n - Changé l'affichage par défaut des resources du marché à 4 heures"
+    },
     "28" : {
       "version": "1.0.3",
       "date": "2024/11/21",
